@@ -29,7 +29,7 @@ namespace HotelSystem.Domain.Models.Entities
         public bool IsAvailable { get; set; }
         /// <summary>
         /// Перечисление, представляющее типы услуг
-        /// </summary>
+        /// </summary>Ы
         public ServiceType ServiceType { get; set; }
     }
 }
