@@ -1,4 +1,5 @@
 ﻿using HotelSystem.Domain.Models.Abstractions.BaseEntities;
+using HotelSystem.Domain.Models.Abstractions.LinkEntities;
 using HotelSystem.Domain.Models.Enums;
 
 namespace HotelSystem.Domain.Models.Entities
@@ -27,9 +28,14 @@ namespace HotelSystem.Domain.Models.Entities
         /// Доступность услуги (например, "включено в стоимость проживания" или "дополнительно платно")
         /// </summary>
         public bool IsAvailable { get; set; }
+
         /// <summary>
         /// Перечисление, представляющее типы услуг
         /// </summary>Ы
         public ServiceType ServiceType { get; set; }
+
+        public List<ServiceEntityGuest>? Guests { get; set; }
+        public List<Payment>? Payments { get; set; }
+
     }
 }

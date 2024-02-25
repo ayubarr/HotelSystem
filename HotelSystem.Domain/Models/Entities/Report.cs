@@ -37,5 +37,8 @@ namespace HotelSystem.Domain.Models.Entities
         /// Автор отчета
         /// </summary>
         public string Author { get; set; }
+
+        public uint? EmloyeeId { get; set; }
+        public Emloyee? Emloyee { get; set; }
     }
 }

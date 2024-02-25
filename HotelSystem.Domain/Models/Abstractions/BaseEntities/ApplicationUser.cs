@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
-namespace HotelSystem.Domain.Models.Abstractions.BaseUsers
+namespace HotelSystem.Domain.Models.Abstractions.BaseEntities
 {
     /// <summary>
     /// Пользователь приложения
     /// </summary>
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser<uint>
     {
         /// <summary>
         /// Токен обновления (для авторизации)

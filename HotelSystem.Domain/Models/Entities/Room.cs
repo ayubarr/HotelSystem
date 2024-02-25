@@ -1,4 +1,5 @@
 ﻿using HotelSystem.Domain.Models.Abstractions.BaseEntities;
+using HotelSystem.Domain.Models.Abstractions.LinkEntities;
 using HotelSystem.Domain.Models.Enums;
 
 namespace HotelSystem.Domain.Models.Entities
@@ -11,7 +12,7 @@ namespace HotelSystem.Domain.Models.Entities
         /// <summary>
         /// Номер комнаты
         /// </summary>
-        public string RoomNumber { get; set; }
+        public string Number { get; set; }
 
         /// <summary>
         /// Тип номера (стандарт, люкс и т.д.)
@@ -32,5 +33,20 @@ namespace HotelSystem.Domain.Models.Entities
         /// Флаг, указывающий, забронирован ли номер
         /// </summary>
         public bool IsBooked { get; set; }
+        /// <summary>
+        /// Время начала брони
+        /// </summary>
+        /// 
+        public DateTime BookingStartDate { get; set; }
+
+        /// <summary>
+        /// Время окончания брони
+        /// </summary>
+        public DateTime BookingEndDate { get; set; }
+
+        public List<EmployeeRoom> Employees { get; set; }
+        public List<Payment>? Payments { get; set; }
+
+
     }
 }

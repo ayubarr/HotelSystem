@@ -1,4 +1,5 @@
-﻿using HotelSystem.Domain.Models.Abstractions.BaseUsers;
+﻿using HotelSystem.Domain.Models.Abstractions.BaseEntities;
+using HotelSystem.Domain.Models.Abstractions.LinkEntities;
 using HotelSystem.Domain.Models.Enums;
 
 namespace HotelSystem.Domain.Models.Entities
@@ -8,6 +9,20 @@ namespace HotelSystem.Domain.Models.Entities
     /// </summary>
     public class Emloyee : ApplicationUser
     {
+        /// <summary>
+        /// Имя сотрудника
+        /// </summary>
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Фамилия сотрудника
+        /// </summary>
+        public string LastName { get; set; }
+        /// <summary>
+        /// отчество сотрудника
+        /// </summary>
+        public string MiddleName { get; set; }
+
         /// <summary>
         /// Тип подразделения сотрудника
         /// </summary>
@@ -27,5 +42,12 @@ namespace HotelSystem.Domain.Models.Entities
         /// Дата принятия на работу
         /// </summary>
         public DateTime HireDate { get; set; }
+
+        public List<EmployeeRoom>? Rooms { get; set; }
+
+        public List<Report>? Reports { get; set; }
+
+        public List<Payment>? Payments { get; set; }
+
     }
 }
