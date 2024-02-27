@@ -9,7 +9,7 @@ namespace HotelSystem.Domain.Models.Entities
         public string Description { get; set; }
 
         public uint? EmloyeeId { get; set; }
-        public Emloyee? Emloyee { get; set; }
+        public Employee? Emloyee { get; set; }
 
         public uint? GuestId { get; set; }
         public Guest? Guest { get; set; }

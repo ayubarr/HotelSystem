@@ -21,7 +21,7 @@ namespace HotelSystem.Domain.Models.Abstractions.LinkEntities
         /// <summary>
         /// Ссылка на сущность сотрудника (Employee), обслуживающего номер.
         /// </summary>
-        public Emloyee Employee { get; set; }
+        public Employee Employee { get; set; }
 
         /// <summary>
         /// Ссылка на сущность номера (Room), обслуживаемого сотрудником.

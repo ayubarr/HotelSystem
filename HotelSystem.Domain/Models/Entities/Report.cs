@@ -39,6 +39,6 @@ namespace HotelSystem.Domain.Models.Entities
         public string Author { get; set; }
 
         public uint? EmloyeeId { get; set; }
-        public Emloyee? Emloyee { get; set; }
+        public Employee? Emloyee { get; set; }
     }
 }

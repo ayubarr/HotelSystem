@@ -7,7 +7,7 @@ namespace HotelSystem.Domain.Models.Entities
     /// <summary>
     /// Сущность сотрудника отеля
     /// </summary>
-    public class Emloyee : ApplicationUser
+    public class Employee : ApplicationUser
     {
         /// <summary>
         /// Имя сотрудника
