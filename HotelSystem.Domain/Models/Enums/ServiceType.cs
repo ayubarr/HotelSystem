@@ -5,7 +5,7 @@
     /// </summary>
     public enum ServiceType
     {
-        AccommodationAndMeals,
+        AccommodationAndMeals = 1,
         Cleaning,
         AdditionalServices
     }

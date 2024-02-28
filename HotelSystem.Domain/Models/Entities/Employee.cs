@@ -1,6 +1,7 @@
 ﻿using HotelSystem.Domain.Models.Abstractions.BaseEntities;
 using HotelSystem.Domain.Models.Abstractions.LinkEntities;
 using HotelSystem.Domain.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace HotelSystem.Domain.Models.Entities
 {
@@ -26,11 +27,13 @@ namespace HotelSystem.Domain.Models.Entities
         /// <summary>
         /// Тип подразделения сотрудника
         /// </summary>
+        [Range(1, 4)]
         public DepartmentType Department { get; set; }
 
         /// <summary>
         /// Тип должности сотрудника
         /// </summary>
+        [Range(1, 4)]
         public PositionType Position { get; set; }
 
         /// <summary>

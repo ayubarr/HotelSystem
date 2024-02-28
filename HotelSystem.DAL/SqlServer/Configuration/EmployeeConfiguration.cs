@@ -1,4 +1,5 @@
-﻿using HotelSystem.Domain.Models.Entities;
+﻿using HotelSystem.DAL.SqlServer.Helpers;
+using HotelSystem.Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.Linq.Expressions;
@@ -9,30 +10,28 @@ namespace HotelSystem.DAL.SqlServer.Configuration
     {
         public void Configure(EntityTypeBuilder<Employee> builder)
         {
-            builder.HasKey(u => u.Id);
+            builder.HasKey(e => e.Id);
+            builder.Property(e => e.Salary).HasPrecision(15, 2);
 
-            SetDefoultMaxLengthProperties(builder,
-               u => u.UserName,
-               u => u.NormalizedUserName,
-               u => u.FirstName,
-               u => u.LastName,
-               u => u.MiddleName,
-               u => u.Email,
-               u => u.NormalizedEmail,
-               u => u.PasswordHash,
-               u => u.SecurityStamp,
-               u => u.ConcurrencyStamp);
-        }
+            builder.Property(e => e.Department)
+                .IsRequired()
+                .HasColumnType("int");
 
-        private void SetDefoultMaxLengthProperties(EntityTypeBuilder<Employee> builder, params Expression<Func<Employee, string>>[] properties)
-        {
-            const int defoultMaxLength = 30;
+            builder.Property(e => e.Position)
+                .IsRequired()
+                .HasColumnType("int");
 
-            foreach (var property in properties)
-            {
-                builder.Property(property).HasMaxLength(defoultMaxLength);
-            }
-
-        }
+            PropertyHelper<Employee>.SetDefoultMaxLengthProperties(builder,
+               e => e.UserName,
+               e => e.NormalizedUserName,
+               e => e.FirstName,
+               e => e.LastName,
+               e => e.MiddleName,
+               e => e.Email,
+               e => e.NormalizedEmail,
+               e => e.PasswordHash,
+               e => e.SecurityStamp,
+               e => e.ConcurrencyStamp);          
+        }       
     }
 }

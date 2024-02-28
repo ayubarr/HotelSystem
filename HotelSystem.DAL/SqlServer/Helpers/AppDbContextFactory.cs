@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HotelSystem.DAL.SqlServer.Context;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace HotelSystem.DAL.SqlServer.Context
+namespace HotelSystem.DAL.SqlServer.Helpers
 {
     public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
@@ -21,5 +22,5 @@ namespace HotelSystem.DAL.SqlServer.Context
             return new AppDbContext(optionsBuilder.Options);
         }
     }
-    
+
 }
