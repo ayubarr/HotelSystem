@@ -10,6 +10,7 @@ namespace HotelSystem.DAL.SqlServer.Context
         }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
+            Database.EnsureCreated();
         }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Guest> Guests { get; set; }
