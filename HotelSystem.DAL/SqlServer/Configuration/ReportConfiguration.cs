@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HotelSystem.DAL.SqlServer.Configuration
 {
-    internal class ReportConfiguration : IEntityTypeConfiguration<Report>
+    public class ReportConfiguration : IEntityTypeConfiguration<Report>
     {
         public void Configure(EntityTypeBuilder<Report> builder)
         {

@@ -1,4 +1,5 @@
-﻿using HotelSystem.Domain.Models.Entities;
+﻿using HotelSystem.DAL.SqlServer.Helpers;
+using HotelSystem.Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -8,7 +9,12 @@ namespace HotelSystem.DAL.SqlServer.Configuration
     {
         public void Configure(EntityTypeBuilder<ServiceEntity> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(se => se.Id);
+            builder.Property(se => se.Price).HasPrecision(15, 2);
+
+            PropertyHelper<ServiceEntity>.SetDefoultMaxLengthProperties(builder,
+                se => se.Name,
+                se => se.Description);
         }
     }
 }
