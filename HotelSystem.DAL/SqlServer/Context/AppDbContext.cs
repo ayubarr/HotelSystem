@@ -30,8 +30,9 @@ namespace HotelSystem.DAL.SqlServer.Context
                 .ApplyConfigurationsFromAssembly(typeof(ReportConfiguration).Assembly)
                 .ApplyConfigurationsFromAssembly(typeof(ServiceEntityConfiguration).Assembly)
                 .ApplyConfigurationsFromAssembly(typeof(RoomConfiguration).Assembly)
-                .ApplyConfigurationsFromAssembly(typeof(PaymentConfiguration).Assembly);
-
+                .ApplyConfigurationsFromAssembly(typeof(PaymentConfiguration).Assembly)
+                .ApplyConfigurationsFromAssembly(typeof(ServiceEntityGuestConfiguration).Assembly)
+                .ApplyConfigurationsFromAssembly(typeof(EmployeeRoomConfiguration).Assembly);
         }
     }
 }

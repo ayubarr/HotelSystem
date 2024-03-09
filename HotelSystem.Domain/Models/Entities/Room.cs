@@ -44,7 +44,7 @@ namespace HotelSystem.Domain.Models.Entities
         /// </summary>
         public DateTime BookingEndDate { get; set; }
 
-        public List<EmployeeRoom> EmployeeRooms { get; set; }
+        public List<EmployeeRoom> Employees { get; set; }
         public List<Payment>? Payments { get; set; }
 
 

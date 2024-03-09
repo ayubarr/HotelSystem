@@ -9,7 +9,15 @@ namespace HotelSystem.DAL.SqlServer.Configuration
     {
         public void Configure(EntityTypeBuilder<EmployeeRoom> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(er => new { er.EmployeeId, er.RoomId });
+
+            builder.HasOne(er => er.Employee)
+                .WithMany(e => e.Rooms)
+                .HasForeignKey(er => er.EmployeeId);
+
+            builder.HasOne(er => er.Room)
+                  .WithMany(e => e.Employees)
+                .HasForeignKey(er => er.RoomId);
         }
     }
 }
