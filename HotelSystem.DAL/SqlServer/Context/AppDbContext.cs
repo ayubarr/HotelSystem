@@ -7,6 +7,7 @@ namespace HotelSystem.DAL.SqlServer.Context
     {
         public AppDbContext() : base()
         {
+
         }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
