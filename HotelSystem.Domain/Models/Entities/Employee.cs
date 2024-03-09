@@ -5,45 +5,35 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HotelSystem.Domain.Models.Entities
 {
-    /// <summary>
-    /// Сущность сотрудника отеля
-    /// </summary>
-    public class Employee : ApplicationUser
+	/// <summary>
+	/// Employee - Сущность сотрудника отеля
+	/// <see cref="FirstName">      Имя сотрудника                  </see>
+	/// <see cref="LastName">       Фамилия сотрудника              </see>
+	/// <see cref="MiddleName">     Отчество сотрудника             </see>
+	/// <see cref="Department">     Тип подразделения сотрудника    </see>
+	/// <see cref="Position">       Тип должности сотрудника        </see>
+	/// <see cref="Salary">         Заработная плата сотрудника     </see>
+	/// <see cref="HireDate">       Дата принятия на работу         </see>
+    /// <see cref="Rooms">          Связь one to many               </see>
+    /// <see cref="Reports">        Связь one to many               </see>
+    /// <see cref="Payments">       Связь one to many               </see>
+	/// </summary>
+	public class Employee : ApplicationUser
     {
-        /// <summary>
-        /// Имя сотрудника
-        /// </summary>
         public string FirstName { get; set; }
 
-        /// <summary>
-        /// Фамилия сотрудника
-        /// </summary>
         public string LastName { get; set; }
-        /// <summary>
-        /// отчество сотрудника
-        /// </summary>
+        
         public string MiddleName { get; set; }
 
-        /// <summary>
-        /// Тип подразделения сотрудника
-        /// </summary>
         [Range(1, 4)]
         public DepartmentType Department { get; set; }
 
-        /// <summary>
-        /// Тип должности сотрудника
-        /// </summary>
         [Range(1, 4)]
         public PositionType Position { get; set; }
 
-        /// <summary>
-        /// Заработная плата сотрудника
-        /// </summary>
         public decimal Salary { get; set; }
 
-        /// <summary>
-        /// Дата принятия на работу
-        /// </summary>
         public DateTime HireDate { get; set; }
 
         public List<EmployeeRoom>? Rooms { get; set; }

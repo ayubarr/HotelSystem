@@ -2,7 +2,21 @@
 
 namespace HotelSystem.Domain.Models.Entities
 {
-    public class Payment : BaseEntity
+	/// <summary>
+	/// Payment - 
+	/// <see cref="Amount">							<see/>
+	/// <see cref="Date">							<see/>
+	/// <see cref="Description">					<see/>
+	/// <see cref="EmloyeeId">						<see/>
+	/// <see cref="Emloyee">						<see/>
+	/// <see cref="GuestId">						<see/>
+	/// <see cref="Guest">							<see/>
+	/// <see cref="RoomId">							<see/>
+	/// <see cref="Room">							<see/>
+	/// <see cref="ServiceEntityId">				<see/>
+	/// <see cref="ServiceEntity">					<see/>
+	/// </summary>
+	public class Payment : BaseEntity
     {
         public decimal? Amount { get; set; }
         public DateTime Date { get; set; }

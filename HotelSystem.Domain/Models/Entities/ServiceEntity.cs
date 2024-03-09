@@ -4,10 +4,17 @@ using HotelSystem.Domain.Models.Enums;
 
 namespace HotelSystem.Domain.Models.Entities
 {
-    /// <summary>
-    /// Сущность дополнительной услуги, предоставляемой отелем
-    /// </summary>
-    public class ServiceEntity : BaseEntity
+	/// <summary>
+	/// ServiceEntity - Сущность дополнительной услуги, предоставляемой отелем
+	/// <see cref="Name">			Название услуги				<see/>
+	/// <see cref="Description">	Описание услуги						<see/>
+	/// <see cref="Price">			Стоимость услуги                                                                           <see/>
+	/// <see cref="IsAvailable">	Доступность услуги (например, "включено в стоимость проживания" или "дополнительно платно")<see/>
+	/// <see cref="ServiceType">	Перечисление, представляющее типы услуг					<see/>
+	/// <see cref="Guests">						<see/>
+	/// <see cref="Payments">							<see/>
+	/// </summary>
+	public class ServiceEntity : BaseEntity
     {
         /// <summary>
         /// Название услуги

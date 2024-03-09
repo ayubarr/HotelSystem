@@ -4,10 +4,19 @@ using HotelSystem.Domain.Models.Enums;
 
 namespace HotelSystem.Domain.Models.Entities
 {
-    /// <summary>
-    /// Сущность номера в отеле
-    /// </summary>
-    public class Room : BaseEntity
+	/// <summary>
+	/// Room - Сущность номера в отеле
+	/// <see cref="Number">				Номер комнаты                                               <see/>
+	/// <see cref="Type">				Тип номера (стандарт, люкс и т.д.)                          <see/>
+	/// <see cref="AmountType">			Тип номера (одноместный, двухместный, трехместный  и т.д.)  <see/>
+	/// <see cref="Price">				Цена за проживание в номере за одну ночь                    <see/>
+	/// <see cref="IsBooked">			Флаг, указывающий, забронирован ли номер                    <see/>
+	/// <see cref="BookingStartDate">	Время начала брони                                          <see/>
+	/// <see cref="BookingEndDate">		Время окончания брони                                       <see/>
+	/// <see cref="Employees">							<see/>
+	/// <see cref="Payments">							<see/>
+	/// </summary>
+	public class Room : BaseEntity
     {
         /// <summary>
         /// Номер комнаты

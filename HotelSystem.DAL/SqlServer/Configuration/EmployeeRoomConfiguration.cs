@@ -5,7 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HotelSystem.DAL.SqlServer.Configuration
 {
-    public class EmployeeRoomConfiguration : IEntityTypeConfiguration<EmployeeRoom>
+	/// <summary>
+	/// Конфигурация many many Представляет связь между сотрудником отеля (Employee) и номером в отеле (Room).
+	/// Каждая запись в этой таблице указывает, какой сотрудник обслуживает какой номер.
+	/// </summary>
+	public class EmployeeRoomConfiguration : IEntityTypeConfiguration<EmployeeRoom>
     {
         public void Configure(EntityTypeBuilder<EmployeeRoom> builder)
         {

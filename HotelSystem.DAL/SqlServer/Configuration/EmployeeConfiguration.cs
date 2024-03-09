@@ -6,7 +6,10 @@ using System.Linq.Expressions;
 
 namespace HotelSystem.DAL.SqlServer.Configuration
 {
-    public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
+	/// <summary>
+	/// Конфигурация сущности сотрудника отеля
+	/// </summary>
+	public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
     {
         public void Configure(EntityTypeBuilder<Employee> builder)
         {

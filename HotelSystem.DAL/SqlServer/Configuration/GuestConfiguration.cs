@@ -5,7 +5,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HotelSystem.DAL.SqlServer.Configuration
 {
-    public class GuestConfiguration : IEntityTypeConfiguration<Guest>
+	/// <summary>
+	/// Конфигурация сущности гостя отеля
+	/// </summary>
+	public class GuestConfiguration : IEntityTypeConfiguration<Guest>
     {
         public void Configure(EntityTypeBuilder<Guest> builder)
         {

@@ -4,7 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HotelSystem.DAL.SqlServer.Configuration
 {
-    public class ServiceEntityGuestConfiguration : IEntityTypeConfiguration<ServiceEntityGuest>
+	/// <summary>
+	/// Представляет связь между гостем отеля (Guest) и услугой (ServiceEntity).
+	/// Каждая запись в этой таблице указывает, какие услуги предоставляются конкретному гостю.
+	/// </summary>
+	public class ServiceEntityGuestConfiguration : IEntityTypeConfiguration<ServiceEntityGuest>
     {
         public void Configure(EntityTypeBuilder<ServiceEntityGuest> builder)
         {

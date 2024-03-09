@@ -6,7 +6,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HotelSystem.DAL.SqlServer.Configuration
 {
-    public class RoomConfiguration : IEntityTypeConfiguration<Room>
+	/// <summary>
+	/// Конфигурация сущности номера в отеле
+	/// </summary>
+	public class RoomConfiguration : IEntityTypeConfiguration<Room>
     {
         public void Configure(EntityTypeBuilder<Room> builder)
         {
