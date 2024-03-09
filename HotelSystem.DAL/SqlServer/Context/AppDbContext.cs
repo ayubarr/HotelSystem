@@ -1,4 +1,5 @@
-﻿using HotelSystem.Domain.Models.Entities;
+﻿using HotelSystem.DAL.SqlServer.Configuration;
+using HotelSystem.Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelSystem.DAL.SqlServer.Context
@@ -7,12 +8,12 @@ namespace HotelSystem.DAL.SqlServer.Context
     {
         public AppDbContext() : base()
         {
-
         }
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            Database.EnsureCreated();
         }
+
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Guest> Guests { get; set; }
         public DbSet<Report> Reports { get; set; }
@@ -22,8 +23,15 @@ namespace HotelSystem.DAL.SqlServer.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
+
+            builder.ApplyConfigurationsFromAssembly(typeof(EmployeeConfiguration).Assembly)
+                .ApplyConfigurationsFromAssembly(typeof(GuestConfiguration).Assembly)
+                .ApplyConfigurationsFromAssembly(typeof(ReportConfiguration).Assembly)
+                .ApplyConfigurationsFromAssembly(typeof(ServiceEntityConfiguration).Assembly)
+                .ApplyConfigurationsFromAssembly(typeof(RoomConfiguration).Assembly)
+                .ApplyConfigurationsFromAssembly(typeof(PaymentConfiguration).Assembly);
 
         }
-
     }
 }

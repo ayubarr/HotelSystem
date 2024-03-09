@@ -1,4 +1,5 @@
 ﻿using HotelSystem.DAL.SqlServer.Helpers;
+using HotelSystem.Domain.Models.Abstractions.LinkEntities;
 using HotelSystem.Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -22,6 +23,7 @@ namespace HotelSystem.DAL.SqlServer.Configuration
             builder.Property(r => r.Number).HasMaxLength(10);
 
             builder.Property(r => r.Price).HasPrecision(15, 2);
+
 
         }
     }

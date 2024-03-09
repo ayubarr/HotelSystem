@@ -7,15 +7,14 @@ namespace HotelSystem.DAL.SqlServer.Helpers
     internal static class PropertyHelper<T> 
         where T : class
     {
-        internal static void SetDefoultMaxLengthProperties(EntityTypeBuilder<T> builder, params Expression<Func<T, string>>[] properties)
-        {
-            const int defoultMaxLength = 50;
+        private const int defoultMaxLength = 50;
 
+        internal static void SetDefoultMaxLengthProperties(EntityTypeBuilder<T> builder,params Expression<Func<T, string>>[] properties)
+        {
             foreach (var property in properties)
             {
                 builder.Property(property).HasMaxLength(defoultMaxLength);
             }
-
         }
     }
 }
