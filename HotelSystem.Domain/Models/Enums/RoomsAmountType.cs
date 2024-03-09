@@ -7,8 +7,8 @@
     public enum RoomsAmountType
     {
         Single = 1,
-        Double,
-        Triple,
-        Quadruple
+        Double = 2,
+        Triple = 3,
+        Quadruple = 4
     }
 }

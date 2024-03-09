@@ -6,7 +6,7 @@
     public enum ServiceType
     {
         AccommodationAndMeals = 1,
-        Cleaning,
-        AdditionalServices
+        Cleaning = 2,
+        AdditionalServices = 3
     }
 }

@@ -6,8 +6,8 @@
     public enum DepartmentType
     {
         Reception = 1,
-        Clearing,
-        Kitchen,
-        Management,
+        Clearing = 2,
+        Kitchen = 3,
+        Management = 4,
     }
 }

@@ -6,7 +6,7 @@
     public enum RoomType
     {
         Standart = 1,
-        Luxe,
-        Vip
+        Luxe = 2,
+        Vip = 3
     }
 }
