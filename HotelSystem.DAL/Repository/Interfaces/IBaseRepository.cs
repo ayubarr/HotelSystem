@@ -19,5 +19,8 @@ namespace HotelSystem.DAL.Repository.Interfaces
         public Task Update(T entity);
 
         public Task Delete(T entity);
+
+        public Task DeleteById(uint id);
+
     }
 }

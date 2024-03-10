@@ -3,6 +3,7 @@ using HotelSystem.DAL.SqlServer.Context;
 using HotelSystem.Domain.Models.Abstractions.BaseEntities;
 using HotelSystem.Validation;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 
 namespace HotelSystem.DAL.Repository.Implentations
 {
@@ -23,45 +24,66 @@ namespace HotelSystem.DAL.Repository.Implentations
         public async Task Create(T entity)
         {
             ObjectValidator<T>.CheckIsNotNullObject(entity);
+
             await _dbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
         }
 
         //по анологии с Create
-        public Task Delete(T entity)
+        public async Task Update(T entity)
         {
-            throw new NotImplementedException();
-        }
+            ObjectValidator<T>.CheckIsNotNullObject(entity);
 
-        //по анологии с Create
-        public Task Update(T entity)
-        {
-            throw new NotImplementedException();
+            _dbSet.Update(entity);
+            await _context.SaveChangesAsync();
         }
 
         //вспомни что такое _dbSet
         public IQueryable<T> GetAll()
         {
-            throw new NotImplementedException();
+            return _dbSet;
         }
 
         //Task.FromResult - подсказка, вспомни синтаксис асинхронности
         //То же самое что GetAll() только асинхронно
-        public Task<IQueryable<T>> GetAllAsync()
+        public async Task<IQueryable<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await Task.FromResult(_dbSet);
         }
 
         //Валидация + LINQ метод(чтобы получить результат асинхронной операции пиши в конце .Result : Пример GetAllAsync.Result)
         public T GetById(uint id)
         {
-            throw new NotImplementedException();
-        }
+			NumberValidator<uint>.IsNotZero(id);
+            
+            var entity = GetAll().FirstOrDefault(x => x.Id == id);
+            ObjectValidator<T>.CheckIsNotNullObject(entity);
+            return entity;
+		}
 
         //Валидация + LINQ только асинхронно всё тоже самое что в GetById
-        public Task<T> GetByIdAsync(uint id)
+        public async Task<T> GetByIdAsync(uint id)
         {
-            throw new NotImplementedException();
+            NumberValidator<uint>.IsNotZero(id);
+            var entity = await GetAllAsync().Result.FirstOrDefaultAsync(x => x.Id == id);
+            ObjectValidator<T>.CheckIsNotNullObject(entity);
+            return entity;
         }
-    }
+
+		public async Task DeleteById(uint id)
+		{
+            var entity = await GetByIdAsync(id);
+            await Delete(entity);
+		}
+
+		//по анологии с Create
+		public async Task Delete(T entity)
+		{
+			ObjectValidator<T>.CheckIsNotNullObject(entity);
+
+			_dbSet.Remove(entity);
+			await _context.SaveChangesAsync();
+		}
+
+	}
 }
