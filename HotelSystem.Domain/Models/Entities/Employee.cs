@@ -26,15 +26,15 @@ namespace HotelSystem.Domain.Models.Entities
         
         public string MiddleName { get; set; }
 
-        [Range(1, 4)]
-        public DepartmentType Department { get; set; }
+        [Range(1, 5)]
+        public DepartmentType Department { get; set; } = DepartmentType.Other;
 
-        [Range(1, 4)]
-        public PositionType Position { get; set; }
+        [Range(1, 5)]
+        public PositionType Position { get; set; } = PositionType.DefoultUser;
 
-        public decimal Salary { get; set; }
+        public decimal? Salary { get; set; }
 
-        public DateTime HireDate { get; set; }
+        public DateTime? HireDate { get; set; }
 
         public List<EmployeeRoom>? Rooms { get; set; }
 

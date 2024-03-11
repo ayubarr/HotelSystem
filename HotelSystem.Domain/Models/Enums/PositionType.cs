@@ -2,9 +2,10 @@
 {
     public enum PositionType
     {
-        Administrator = 1,
+        DefoultUser = 1,
         Cleaner = 2,
         Waiter = 3,
         Manager = 4,
+        Admin = 5,
     }
 }

@@ -26,12 +26,12 @@ namespace HotelSystem.Domain.Models.Entities
         /// <summary>
         /// Тип номера (стандарт, люкс и т.д.)
         /// </summary>
-        public RoomType Type { get; set; }
+        public RoomType? Type { get; set; }
 
         /// <summary>
         /// Тип номера (одноместный, двухместный, трехместный  и т.д.)
         /// </summary>
-        public RoomsAmountType AmountType { get; set; }
+        public RoomsAmountType AmountType { get; set; } = RoomsAmountType.Single;
 
         /// <summary>
         /// Цена за проживание в номере за одну ночь
