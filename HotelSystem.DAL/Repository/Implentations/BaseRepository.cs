@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HotelSystem.DAL.Repository.Implentations
 {
-    public class BaseRepository<T> : IBaseRepository<T>
+    public abstract class BaseRepository<T> : IBaseRepository<T>
         where T : BaseEntity
     {
         protected readonly AppDbContext _context;
@@ -28,7 +28,6 @@ namespace HotelSystem.DAL.Repository.Implentations
             await _context.SaveChangesAsync();
         }
 
-        //по анологии с Create
         public async Task Update(T entity)
         {
             ObjectValidator<T>.CheckIsNotNullObject(entity);
@@ -37,20 +36,16 @@ namespace HotelSystem.DAL.Repository.Implentations
             await _context.SaveChangesAsync();
         }
 
-        //вспомни что такое _dbSet
         public IQueryable<T> GetAll()
         {
             return _dbSet;
         }
 
-        //Task.FromResult - подсказка, вспомни синтаксис асинхронности
-        //То же самое что GetAll() только асинхронно
         public async Task<IQueryable<T>> GetAllAsync()
         {
             return await Task.FromResult(_dbSet);
         }
 
-        //Валидация + LINQ метод(чтобы получить результат асинхронной операции пиши в конце .Result : Пример GetAllAsync.Result)
         public T GetById(uint id)
         {
             NumberValidator<uint>.IsNotZero(id);
@@ -60,7 +55,6 @@ namespace HotelSystem.DAL.Repository.Implentations
             return entity;
         }
 
-        //Валидация + LINQ только асинхронно всё тоже самое что в GetById
         public async Task<T> GetByIdAsync(uint id)
         {
             NumberValidator<uint>.IsNotZero(id);
@@ -75,7 +69,6 @@ namespace HotelSystem.DAL.Repository.Implentations
             await Delete(entity);
         }
 
-        //по анологии с Create
         public async Task Delete(T entity)
         {
             ObjectValidator<T>.CheckIsNotNullObject(entity);
@@ -83,6 +76,5 @@ namespace HotelSystem.DAL.Repository.Implentations
             _dbSet.Remove(entity);
             await _context.SaveChangesAsync();
         }
-
     }
 }
