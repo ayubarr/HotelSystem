@@ -1,5 +1,4 @@
 ﻿using HotelSystem.ApiModels.DTOs.BaseDTOs;
-using HotelSystem.Domain.Models.Abstractions.LinkEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace HotelSystem.ApiModels.DTOs.EntitiesDTOs.Guest
 {
-    public class CreateGuestDTO : BaseDTO
-    {
+	public class UpdateGuestDTO : BaseDTO
+	{
 		public string FirstName { get; set; }
 
 		public string LastName { get; set; }

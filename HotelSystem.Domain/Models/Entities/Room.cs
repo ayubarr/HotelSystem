@@ -13,44 +13,23 @@ namespace HotelSystem.Domain.Models.Entities
 	/// <see cref="IsBooked">			Флаг, указывающий, забронирован ли номер                    <see/>
 	/// <see cref="BookingStartDate">	Время начала брони                                          <see/>
 	/// <see cref="BookingEndDate">		Время окончания брони                                       <see/>
-	/// <see cref="Employees">							<see/>
-	/// <see cref="Payments">							<see/>
+	/// <see cref="Employees">			Связь many to many											<see/>
+	/// <see cref="Payments">			Cвязь one to many											<see/>
 	/// </summary>
 	public class Room : BaseEntity
     {
-        /// <summary>
-        /// Номер комнаты
-        /// </summary>
         public string Number { get; set; }
 
-        /// <summary>
-        /// Тип номера (стандарт, люкс и т.д.)
-        /// </summary>
         public RoomType? Type { get; set; }
 
-        /// <summary>
-        /// Тип номера (одноместный, двухместный, трехместный  и т.д.)
-        /// </summary>
         public RoomsAmountType AmountType { get; set; } = RoomsAmountType.Single;
 
-        /// <summary>
-        /// Цена за проживание в номере за одну ночь
-        /// </summary>
         public decimal Price { get; set; }
 
-        /// <summary>
-        /// Флаг, указывающий, забронирован ли номер
-        /// </summary>
         public bool IsBooked { get; set; }
-        /// <summary>
-        /// Время начала брони
-        /// </summary>
-        /// 
+
         public DateTime BookingStartDate { get; set; }
 
-        /// <summary>
-        /// Время окончания брони
-        /// </summary>
         public DateTime BookingEndDate { get; set; }
 
         public List<EmployeeRoom> Employees { get; set; }
