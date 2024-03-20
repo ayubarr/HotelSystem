@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Response\" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HotelSystem.Domain\HotelSystem.Domain.csproj" />
+    <ProjectReference Include="..\HotelSystem.Validation\HotelSystem.Validation.csproj" />
   </ItemGroup>
 
 </Project>
