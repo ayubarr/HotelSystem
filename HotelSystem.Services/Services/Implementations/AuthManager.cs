@@ -70,8 +70,6 @@ namespace HotelSystem.Services.Services.Implementations
 					claims: authClaims,
 					signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
 					);
-
-
 		}
 
 		ClaimsPrincipal ITokenManager<T>.GetClaimsPrincipalFromExpiredToken(string? token)
