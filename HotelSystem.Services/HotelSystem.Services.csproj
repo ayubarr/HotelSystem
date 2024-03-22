@@ -13,11 +13,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="LinqKit.Microsoft.EntityFrameworkCore" Version="6.1.5" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.35.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HotelSystem.ApiModels\HotelSystem.ApiModels.csproj" />
     <ProjectReference Include="..\HotelSystem.Domain\HotelSystem.Domain.csproj" />
   </ItemGroup>
 
