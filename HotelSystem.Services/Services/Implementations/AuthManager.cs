@@ -5,6 +5,7 @@ using HotelSystem.Domain.Models.Entities;
 using HotelSystem.Services.Services.Interfaces;
 using HotelSystem.Validation;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Design.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -12,6 +13,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,7 +55,10 @@ namespace HotelSystem.Services.Services.Implementations
 
 		string ITokenManager<T>.GenerateRefreshToken()
 		{
-			throw new NotImplementedException();
+			var randomNumber = new byte[64];
+			using var rng = RandomNumberGenerator.Create();
+			rng.GetBytes(randomNumber);
+			return Convert.ToBase64String(randomNumber);
 		}
 
 		JwtSecurityToken ITokenManager<T>.GenerateToken(List<Claim> authClaims)
@@ -74,7 +79,24 @@ namespace HotelSystem.Services.Services.Implementations
 
 		ClaimsPrincipal ITokenManager<T>.GetClaimsPrincipalFromExpiredToken(string? token)
 		{
-			throw new NotImplementedException();
+			StringValidator.CheckIsNotNull(token);
+			var tokenValidationParams = new TokenValidationParameters
+			{
+				ValidateAudience = false,
+				ValidateIssuer = false,
+				ValidateIssuerSigningKey = true,
+				IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"])),
+				ValidateLifetime = false
+			};
+
+			var tokenHandler = new JwtSecurityTokenHandler();
+			var principal = tokenHandler.ValidateToken(token, tokenValidationParams, out SecurityToken securityToken);
+			
+			if (securityToken is not JwtSecurityToken jwtSecurityToken
+				|| !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+				throw new SecurityTokenException("Invalid Token");
+
+			return principal;
 		}
 
 		Task<IBaseResponse<AuthResultStruct>> ITokenManager<T>.UpdateToken(TokenModel model)
