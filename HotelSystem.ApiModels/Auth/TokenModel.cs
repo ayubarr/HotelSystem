@@ -12,7 +12,7 @@ namespace HotelSystem.ApiModels.Auth
     /// </summary>
     public class TokenModel
     {
-        public string? AcessToken { get; set; }       
+        public string? AccessToken { get; set; }       
         public string? RefreshToken { get; set; }
     }
 }

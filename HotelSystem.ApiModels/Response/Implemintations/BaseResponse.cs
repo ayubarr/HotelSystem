@@ -1,6 +1,6 @@
-﻿using HotelSystem.Validation;
+﻿using HotelSystem.ApiModels.Response.Interfaces;
+using HotelSystem.Validation;
 using Newtonsoft.Json;
-using static HotelSystem.ApiModels.Response.Interfaces.IBaseResponse;
 
 namespace HotelSystem.ApiModels.Response.Implemintations
 {

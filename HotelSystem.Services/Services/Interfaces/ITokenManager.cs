@@ -1,4 +1,5 @@
 ﻿using HotelSystem.ApiModels.Auth;
+using HotelSystem.ApiModels.Response.Helpers;
 using HotelSystem.ApiModels.Response.Interfaces;
 using HotelSystem.Domain.Models.Abstractions.BaseEntities;
 using System;
@@ -18,31 +19,24 @@ namespace HotelSystem.Services.Services.Interfaces
 	public interface ITokenManager<TModel> 
 		where TModel : ApplicationUser
 	{
-		/// <summary>
-		/// Обновляет токен доступа, используя предоставленную модель токена
-		/// </summary>
-		/// <param name="model"> Модель токена</param>
-		/// <returns> Результат обновления токена </returns>
-		public Task<IBaseResponse<AuthResultStruct>> UpdateToken(TokenModel model);
+        /// <summary>
+        /// Обновляет токен доступа, используя предоставленную модель токена
+        /// </summary>
+        /// <param name="model"> Модель токена</param>
+        /// <returns> Результат обновления токена </returns>
+        public Task<IBaseResponse<AuthResultStruct>> UpdateToken(TokenModel model);
 
-		/// <summary>
-		/// Создает токен доступа, используя предоставленный список утверждений пользователя
-		/// </summary>
-		/// <param name="claims"> список утверждений пользователя </param>
-		/// <returns> Токен доступа </returns>
-		protected JwtSecurityToken GenerateToken(List<Claim> claims);
+        /// <summary>
+        /// Отзывает токен обновления для пользователя с указанным именем пользователя.
+        /// </summary>
+        /// <param name="username">Имя пользователя, для которого нужно отозвать токен обновления.</param>
+        /// <returns>Задача, представляющая асинхронную операцию и содержащая <see cref="IBaseResponse{T}"/>, где T - логическое значение, указывающее на успешность или неудачу отзыва токена.</returns>
+        public Task<IBaseResponse<bool>> RevokeRefreshTokenByUsernameAsync(string username);
 
-		/// <summary>
-		/// Генерирует токен обновления.
-		/// </summary>
-		/// <returns> Токен обновления </returns>
-		protected string GenerateRefreshToken();
-
-		/// <summary>
-		/// Возвращает основные утверждения из истекшего JWT токена
-		/// </summary>
-		/// <param name="token"> токен доступа</param>
-		/// <returns> Основные утверждения токена </returns>
-		protected ClaimsPrincipal GetClaimsPrincipalFromExpiredToken(string? token);
-	}
+        /// <summary>
+        /// Отзывает все токены обновления.
+        /// </summary>
+        /// <returns>Задача, представляющая асинхронную операцию и содержащая <see cref="IBaseResponse{T}"/>, где T - логическое значение, указывающее на успешность или неудачу отзыва всех токенов обновления.</returns>
+        public Task<IBaseResponse<bool>> RevokeAllRefreshTokensAsync();
+    }
 }
