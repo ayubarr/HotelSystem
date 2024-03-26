@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HotelSystem.DAL.Repository.Implentations
 {
-    public abstract class BaseRepository<T> : IBaseRepository<T>
+    public class BaseRepository<T> : IBaseRepository<T>
         where T : BaseEntity
     {
         protected readonly AppDbContext _context;
