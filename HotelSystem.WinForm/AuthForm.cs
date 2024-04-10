@@ -9,7 +9,7 @@ namespace HotelSystem.WinForm
 
         private void button_Login_Click(object sender, EventArgs e)
         {
-            if(CheckLoginAndPassword())
+         //   if(CheckLoginAndPassword())
 
         }
 

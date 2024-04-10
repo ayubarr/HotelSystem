@@ -21,7 +21,7 @@ namespace HotelSystem.API
         public static IServiceCollection InitializeRepositories(this IServiceCollection services)
         {
             #region Base_Repositories 
-            services.AddScoped(typeof(BaseRepository<>), typeof(IBaseRepository<>));
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped(typeof(UserManager<>));
             #endregion
             return services;
@@ -29,7 +29,7 @@ namespace HotelSystem.API
 
         public static IServiceCollection InitializeServices(this IServiceCollection services)
         {
-            services.AddScoped<IAuthManager<Employee>, AuthManager<Employee>>();
+            services.AddScoped<IUserStore<Employee>, UserStore<Employee, IdentityRole<uint>, AppDbContext, uint>>();
 
             return services;
 
@@ -38,7 +38,6 @@ namespace HotelSystem.API
 
         public static IServiceCollection InitializeIdentity(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<RoleManager<IdentityRole>>();
 
             services.AddScoped<IAuthManager<Employee>>(provider =>
             {
@@ -81,7 +80,12 @@ namespace HotelSystem.API
 
         public static async Task InitializeRoles(this IServiceCollection services)
         {
+            services.AddScoped<AppDbContext>();
+            services.AddScoped<RoleManager<IdentityRole>>();
+            services.AddScoped<IRoleStore<IdentityRole>, RoleStore<IdentityRole>>();
+
             var roleManager = services.BuildServiceProvider().GetRequiredService<RoleManager<IdentityRole>>();
+            
             await SeedRoles(roleManager);
         }
 
