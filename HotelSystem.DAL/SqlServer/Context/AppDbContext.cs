@@ -1,10 +1,13 @@
 ﻿using HotelSystem.DAL.SqlServer.Configuration;
+using HotelSystem.Domain.Models.Abstractions.BaseEntities;
 using HotelSystem.Domain.Models.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelSystem.DAL.SqlServer.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, uint>
     {
         public AppDbContext() : base()
         {
@@ -13,7 +16,6 @@ namespace HotelSystem.DAL.SqlServer.Context
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
-
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Guest> Guests { get; set; }
         public DbSet<Report> Reports { get; set; }

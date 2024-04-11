@@ -9,6 +9,7 @@ using HotelSystem.Services.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System.Data;
@@ -30,6 +31,7 @@ namespace HotelSystem.API
         public static IServiceCollection InitializeServices(this IServiceCollection services)
         {
             services.AddScoped<IUserStore<Employee>, UserStore<Employee, IdentityRole<uint>, AppDbContext, uint>>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
 
             return services;
 
@@ -38,7 +40,7 @@ namespace HotelSystem.API
 
         public static IServiceCollection InitializeIdentity(this IServiceCollection services, IConfiguration configuration)
         {
-
+            services.AddScoped<IdentityDbContext<ApplicationUser, ApplicationRole, uint>, AppDbContext>();
             services.AddScoped<IAuthManager<Employee>>(provider =>
             {
                 var userManager = provider.GetRequiredService<UserManager<Employee>>();
@@ -80,7 +82,7 @@ namespace HotelSystem.API
 
         public static async Task InitializeRoles(this IServiceCollection services)
         {
-            services.AddScoped<AppDbContext>();
+            //services.AddScoped<AppDbContext>();
             services.AddScoped<RoleManager<IdentityRole>>();
             services.AddScoped<IRoleStore<IdentityRole>, RoleStore<IdentityRole>>();
 

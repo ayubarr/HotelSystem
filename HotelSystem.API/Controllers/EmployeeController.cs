@@ -2,6 +2,7 @@
 using HotelSystem.ApiModels.DTOs.EntitiesDTOs.Employee;
 using HotelSystem.Domain.Models.Entities;
 using HotelSystem.Services.Services.Interfaces;
+using HotelSystem.Validation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
@@ -12,17 +13,16 @@ namespace HotelSystem.API.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-       // private readonly IEmployeeService _employeeService;
+        private readonly IEmployeeService _employeeService;
         private readonly IAuthManager<Employee> _authService;
 
-        public EmployeeController(/*IEmployeeService employeeService,*/ IAuthManager<Employee> authManager)
+        public EmployeeController(IEmployeeService employeeService, IAuthManager<Employee> authManager)
         {
-          //  _employeeService = employeeService;
+            _employeeService = employeeService;
             _authService = authManager;
         }
 
 
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin, Supervisor")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -42,131 +42,27 @@ namespace HotelSystem.API.Controllers
             return Ok(employeeDtos);
         }
 
-
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin, Supervisor")]
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(string id)
+        public async Task<IActionResult> Get(uint id)
         {
             var response = await _employeeService.GetByIdAsync(id);
             return Ok(response.Data);
         }
 
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin, Supervisor, Manager, Employee")]
-        [HttpGet]
-        [Route("get-projects/{employeeId}")]
-        public async Task<IActionResult> GetProjects(string employeeId)
-        {
-            var response = await _employeeService.GetEmployeeProjectsAsync(employeeId);
-            return Ok(response.Data);
-        }
-
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin, Supervisor, Manager, Employee")]
-        [HttpGet]
-        [Route("get-tasks/{employeeId}")]
-        public async Task<IActionResult> GetTasks(string employeeId)
-        {
-            var response = await _employeeService.GetEmployeeTasksAsync(employeeId);
-
-            var taskDtos = response.Data.Select(task => new TaskItemDTO
-            {
-                TaskItemId = task.Id,
-                Name = task.Name,
-                Comment = task.Comment,
-                Status = task.Status,
-                Priority = task.Priority,
-                AuthorId = task.AuthorId,
-                ExecutorId = task.ExecutorId
-            });
-            var tasksJson = JsonSerializer.Serialize(taskDtos);
-
-
-            return Content(tasksJson, "application/json");
-        }
-
-
-
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin, Supervisor")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(string id, UpdateEmployeeDTO employeeDto)
+        public async Task<IActionResult> Put(uint id, UpdateEmployeeDTO employeeDto)
         {
             var response = await _employeeService.UpdateAsync(id, employeeDto);
             return Ok(response.Data);
         }
 
-
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin, Supervisor")]
-        [HttpGet("checkUserRole/{userId}/{roleType}")]
-        public async Task<IActionResult> CheckUserRole(string userId, Roles roleType)
-        {
-            var response = await _employeeService.CheckUserRole(userId, roleType);
-
-            if (response.IsSuccess)
-            {
-                return Ok(response.Data);
-            }
-            else
-            {
-                return BadRequest(response.Message);
-            }
-        }
-
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin, Supervisor")]
-        [HttpPut]
-        [Route("put-role/{userId}/{roleType}")]
-        public async Task<IActionResult> PutRoleById(string userId, Roles roleType)
-        {
-            var response = await _employeeService.SetEmployeeNewRoleByIdAsync(userId, roleType);
-            return Ok(response);
-        }
-
-
         [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin, Supervisor")]
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(uint id)
         {
             var response = await _employeeService.DeleteByIdAsync(id);
             return Ok(response);
         }
-
-
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin, Supervisor, Manager")]
-        [HttpPost]
-        [Route("assign-to-project/{projectId}")]
-        public async Task<IActionResult> AssignToProject(List<string> employeesId, Guid projectId)
-        {
-            var response = await _employeeService.AssignEmployeeToProjectAsync(employeesId, projectId);
-            return Ok(response);
-        }
-
-
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin, Supervisor, Manager")]
-        [HttpPost]
-        [Route("remove-from-project/{projectId}")]
-        public async Task<IActionResult> RemoveFromProject(List<string> employeesId, Guid projectId)
-        {
-            var response = await _employeeService.RemoveEmployeeFromProjectAsync(employeesId, projectId);
-            return Ok(response);
-        }
-
-
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin, Supervisor, Manager")]
-        [HttpPost]
-        [Route("assign-executor-to-task/{taskId}/{employeeId}")]
-        public async Task<IActionResult> AssignExecutorToTask(Guid taskId, string employeeId)
-        {
-            var response = await _employeeService.AssignExecutorToTaskAsync(taskId, employeeId);
-            return Ok(response);
-        }
-
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin, Supervisor, Manager, Employee")]
-        [HttpPut]
-        [Route("change-task-status/{taskId}/{newStatus}")]
-        public async Task<IActionResult> ChangeTaskStatus(Guid taskId, Status newStatus)
-        {
-            var response = await _employeeService.ChangeTaskStatusAsync(taskId, newStatus);
-            return Ok(response);
-        }
-
 
         [HttpPost]
         [Route("login")]
@@ -186,7 +82,7 @@ namespace HotelSystem.API.Controllers
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
             var result = await _authService.Register(model);
-            await _employeeService.SetEmployeeNewRoleByIdAsync(result.Data, Roles.Employee);
+            //await _employeeService.SetEmployeeNewRoleByIdAsync(result.Data, Roles.Employee);
 
             return Ok(result);
         }

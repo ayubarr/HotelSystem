@@ -13,7 +13,6 @@ namespace HotelSystem.DAL.SqlServer.Configuration
     {
         public void Configure(EntityTypeBuilder<Employee> builder)
         {
-            builder.HasKey(e => e.Id);
             builder.Property(e => e.Salary).HasPrecision(15, 2);
 
             builder.Property(e => e.Department)

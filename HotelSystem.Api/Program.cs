@@ -15,16 +15,9 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn
     sqlOptions.EnableRetryOnFailure();
 }));
 builder.Services
-    //.InitializeIdentity(configuration)
+    .InitializeIdentity(configuration)
     .InitializeRepositories()
     .InitializeServices();
-
-//await builder.Services.InitializeRoles();
-//await builder.Services.SeedAdmins();
-//builder.Logging.IntialiseLogger(options =>
-//{
-//    builder.Configuration.GetSection("Logging").GetSection("Database").GetSection("Options").Bind(options);
-//});
 
 builder.Services.AddControllers();
 
