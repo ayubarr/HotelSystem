@@ -25,7 +25,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(x =>
 {
-    x.SwaggerDoc("v1", new OpenApiInfo { Version = "v1", Title = "FinalProj" });
+    x.SwaggerDoc("v1", new OpenApiInfo { Version = "v1", Title = "HotelSystem" });
 
     x.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
