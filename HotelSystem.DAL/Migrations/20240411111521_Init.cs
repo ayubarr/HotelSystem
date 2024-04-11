@@ -45,7 +45,7 @@ namespace HotelSystem.DAL.Migrations
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     NormalizedEmail = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SecurityStamp = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
