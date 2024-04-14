@@ -8,4 +8,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HotelSystem.DAL\HotelSystem.DAL.csproj" />
+    <ProjectReference Include="..\HotelSystem.Services\HotelSystem.Services.csproj" />
+    <ProjectReference Include="..\HotelSystem.API\HotelSystem.API.csproj" />
+  </ItemGroup>
+  
 </Project>

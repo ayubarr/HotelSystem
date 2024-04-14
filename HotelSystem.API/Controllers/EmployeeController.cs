@@ -2,7 +2,6 @@
 using HotelSystem.ApiModels.DTOs.EntitiesDTOs.Employee;
 using HotelSystem.Domain.Models.Entities;
 using HotelSystem.Services.Services.Interfaces;
-using HotelSystem.Validation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
@@ -82,10 +81,9 @@ namespace HotelSystem.API.Controllers
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
             var result = await _authService.Register(model);
-            //await _employeeService.SetEmployeeNewRoleByIdAsync(result.Data, Roles.Employee);
+            //await _employeeService.SetEmployeeNewRoleByIdAsync(result.a, Roles.Employee);
 
             return Ok(result);
         }
-
     }
 }
