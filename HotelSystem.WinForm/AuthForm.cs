@@ -1,3 +1,6 @@
+using Newtonsoft.Json;
+using System.Text;
+
 namespace HotelSystem.WinForm
 {
     public partial class AuthForm : Form
@@ -7,10 +10,47 @@ namespace HotelSystem.WinForm
             InitializeComponent();
         }
 
-        private void button_Login_Click(object sender, EventArgs e)
+        private async void button_Login_Click(object sender, EventArgs e)
         {
             if (!CheckLoginAndPassword()) return;
 
+
+            // Формируем JSON-строку с полученными значениями
+            string jsonContent = JsonConvert.SerializeObject(new
+            {
+                username = richTextBox_Login.Text,
+                password = richTextBox_Password.Text
+            });
+
+
+
+            // Создаем экземпляр HttpClient
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    client.DefaultRequestHeaders.Add("accept", "*/*");
+
+                    HttpResponseMessage response = await client.PostAsync("https://localhost:5001/api/Employee/login",
+                        new StringContent(jsonContent, Encoding.UTF8, "application/json"));
+
+                    // Проверяем успешность запроса
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("User registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        // Обрабатываем ошибку
+                        MessageBox.Show($"Registration failed with status code {response.StatusCode}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Обрабатываем исключение
+                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void AuthForm_Load(object sender, EventArgs e)

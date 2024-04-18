@@ -35,37 +35,31 @@ namespace HotelSystem.WinForm
             string jsonContent = $@"{{
             ""userName"": ""{richTextBox_LoginRegistration.Text}"",
             ""password"": ""{richTextBox_PasswordRegistration.Text}"",
-            ""email"": ""{richTextBox_ConfirmRegistration.Text}""
+            ""email"": ""user@example.com""
             }}";
 
-            // Создаем экземпляр HttpClient
+
+            //Отправляем запрос на API
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    // Устанавливаем заголовки
                     client.DefaultRequestHeaders.Add("accept", "*/*");
-                  //  client.DefaultRequestHeaders.Add("Content-Type", "application/json");
 
-                    // Выполняем POST запрос к API
                     HttpResponseMessage response = await client.PostAsync("https://localhost:5001/api/Employee/register",
                         new StringContent(jsonContent, Encoding.UTF8, "application/json"));
 
-                    // Проверяем успешность запроса
                     if (response.IsSuccessStatusCode)
                     {
-                        label_ErrorConfirm.Text = response.Content.ReadAsStringAsync().Result;
                         MessageBox.Show("User registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        // Обрабатываем ошибку
                         MessageBox.Show($"Registration failed with status code {response.StatusCode}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Обрабатываем исключение
                     MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }     
@@ -92,6 +86,11 @@ namespace HotelSystem.WinForm
                 label_ErrorPassword.Visible = true;
                 return false;
             }
+            if (!string.Equals(richTextBox_ConfirmRegistration.Text, richTextBox_PasswordRegistration.Text)) {
+                MessageBox.Show($"Пароли должны совпадать", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             return true;
         }
     }

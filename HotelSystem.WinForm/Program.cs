@@ -19,7 +19,7 @@ namespace HotelSystem.WinForm
         static void StartApi()
         {
             // Путь к исполняемому файлу вашего API проекта
-            string apiPath = @"C:\Users\Ayub\source\repos\HotelSystem\HotelSystem.API\bin\Debug\net6.0\HotelSystem.API.exe";
+            string apiPath = @"..\..\..\..\HotelSystem.Api\bin\Debug\net6.0\HotelSystem.API.exe";
 
             // Запускаем процесс API проекта
             Process.Start(apiPath);

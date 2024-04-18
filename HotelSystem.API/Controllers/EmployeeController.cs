@@ -81,7 +81,6 @@ namespace HotelSystem.API.Controllers
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
             var result = await _authService.Register(model);
-            //await _employeeService.SetEmployeeNewRoleByIdAsync(result.a, Roles.Employee);
 
             return Ok(result);
         }
