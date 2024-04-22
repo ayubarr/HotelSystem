@@ -8,7 +8,7 @@ namespace HotelSystem.WinForm
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        internal static void Main()
         {
             StartApi();
             ApplicationConfiguration.Initialize();
@@ -16,7 +16,7 @@ namespace HotelSystem.WinForm
             Application.Run(new AuthForm());
         }
 
-        static void StartApi()
+        private static void StartApi()
         {
             // Путь к исполняемому файлу вашего API проекта
             string apiPath = @"..\..\..\..\HotelSystem.Api\bin\Debug\net6.0\HotelSystem.API.exe";

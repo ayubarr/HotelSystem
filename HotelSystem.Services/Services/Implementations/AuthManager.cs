@@ -37,7 +37,7 @@ namespace HotelSystem.Services.Services.Implementations
             try
             {
                 ObjectValidator<LoginModel>.CheckIsNotNullObject(model);
-                var user = await _userManager.FindByNameAsync(model.UserName);
+                var user = await _userManager.FindByNameAsync(model.Username);
                 if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
                 {
                 //    var userRoles = await _userManager.GetRolesAsync(user);
