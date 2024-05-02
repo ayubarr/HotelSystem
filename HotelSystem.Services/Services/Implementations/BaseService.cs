@@ -1,10 +1,9 @@
 ﻿using HotelSystem.ApiModels.DTOs.BaseDTOs;
-using HotelSystem.ApiModels.DTOs.EntitiesDTOs.Employee;
 using HotelSystem.ApiModels.Response.Helpers;
 using HotelSystem.ApiModels.Response.Interfaces;
 using HotelSystem.DAL.Repository.Interfaces;
 using HotelSystem.Domain.Models.Abstractions.BaseEntities;
-using HotelSystem.Domain.Models.Entities;
+using HotelSystem.Services.Mapping;
 using HotelSystem.Services.Services.Interfaces;
 using HotelSystem.Validation;
 
@@ -12,11 +11,34 @@ namespace HotelSystem.Services.Services.Implementations
 {
     public class BaseService<T> : IBaseService<T>
         where T : BaseEntity
+
     {
         private readonly IBaseRepository<T> _repository;
         public BaseService(IBaseRepository<T> repository)
         {
             _repository = repository;
+        }
+
+        public async Task<IBaseResponse<T>> CreateAsync<Tmodel>(Tmodel entityDTO) where Tmodel : BaseDTO
+        {
+            try
+            {
+                ObjectValidator<Tmodel>.CheckIsNotNullObject(entityDTO);
+
+                var entity = MapperHelperForEntity<Tmodel, T>.Map(entityDTO);
+
+                await _repository.Create(entity);
+
+                return ResponseFactory<T>.CreateSuccessResponse(entity);
+            }
+            catch (ArgumentNullException argNullException)
+            {
+                return ResponseFactory<T>.CreateNotFoundResponse(argNullException);
+            }
+            catch (Exception exception)
+            {
+                return ResponseFactory<T>.CreateErrorResponse(exception);
+            }
         }
 
         public async Task<IBaseResponse<bool>> DeleteByIdAsync(uint Id)
@@ -43,7 +65,7 @@ namespace HotelSystem.Services.Services.Implementations
 
                 return ResponseFactory<IEnumerable<T>>.CreateSuccessResponse(entities);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return ResponseFactory<IEnumerable<T>>.CreateErrorResponse(ex);
 
@@ -66,18 +88,21 @@ namespace HotelSystem.Services.Services.Implementations
             }
         }
 
-        public async Task<IBaseResponse<bool>> UpdateAsync(uint id, BaseDTO entitieDto)
+        public async Task<IBaseResponse<bool>> UpdateAsync<Tmodel>(Tmodel entitieDto) where Tmodel : BaseDTO
         {
             try
             {
-                var entity = await _repository.Update(()entitieDto);
+                ObjectValidator<Tmodel>.CheckIsNotNullObject(entitieDto);
+                T entity = MapperHelperForEntity<Tmodel, T>.Map(entitieDto);
+
+                await _repository.Update(entity);
                 ObjectValidator<T>.CheckIsNotNullObject(entity);
 
-                return ResponseFactory<T>.CreateSuccessResponse(entity);
+                return ResponseFactory<bool>.CreateSuccessResponse(true);
             }
             catch (Exception ex)
             {
-                return ResponseFactory<T>.CreateErrorResponse(ex);
+                return ResponseFactory<bool>.CreateErrorResponse(ex);
 
             }
         }

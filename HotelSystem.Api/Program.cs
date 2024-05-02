@@ -1,6 +1,8 @@
 
 using HotelSystem.API;
 using HotelSystem.DAL.SqlServer.Context;
+using HotelSystem.Domain.Models.Abstractions.BaseEntities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -14,6 +16,8 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn
 {
     sqlOptions.EnableRetryOnFailure();
 }));
+
+
 builder.Services
     .InitializeIdentity(configuration)
     .InitializeRepositories()

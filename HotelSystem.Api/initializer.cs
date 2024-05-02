@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System.Data;
 using System.Text;
@@ -30,8 +29,12 @@ namespace HotelSystem.API
 
         public static IServiceCollection InitializeServices(this IServiceCollection services)
         {
+            services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
+           // services.AddScoped<IBaseService<Guest>, BaseService<Guest>>();
+
             services.AddScoped<IUserStore<Employee>, UserStore<Employee, IdentityRole<uint>, AppDbContext, uint>>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
 
             return services;
 
@@ -82,12 +85,12 @@ namespace HotelSystem.API
 
         public static async Task InitializeRoles(this IServiceCollection services)
         {
-            //services.AddScoped<AppDbContext>();
+            //   services.AddScoped<AppDbContext>();
             services.AddScoped<RoleManager<IdentityRole>>();
             services.AddScoped<IRoleStore<IdentityRole>, RoleStore<IdentityRole>>();
 
             var roleManager = services.BuildServiceProvider().GetRequiredService<RoleManager<IdentityRole>>();
-            
+
             await SeedRoles(roleManager);
         }
 

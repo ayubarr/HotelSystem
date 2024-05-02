@@ -15,6 +15,10 @@ namespace HotelSystem.Domain.Models.Entities
 	/// </summary>
 	public class Guest : BaseEntity 
     {
+        public Guest() // Конструктор по умолчанию
+        {
+        }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }

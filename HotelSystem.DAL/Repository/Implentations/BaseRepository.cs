@@ -3,6 +3,7 @@ using HotelSystem.DAL.SqlServer.Context;
 using HotelSystem.Domain.Models.Abstractions.BaseEntities;
 using HotelSystem.Validation;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace HotelSystem.DAL.Repository.Implentations
 {
@@ -15,6 +16,8 @@ namespace HotelSystem.DAL.Repository.Implentations
         public BaseRepository(AppDbContext context, DbSet<T> dbSet)
         {
             ObjectValidator<AppDbContext>.CheckIsNotNullObject(context);
+            ObjectValidator<DbSet<T>>.CheckIsNotNullObject(dbSet);
+
 
             _context = context;
             _dbSet = dbSet;

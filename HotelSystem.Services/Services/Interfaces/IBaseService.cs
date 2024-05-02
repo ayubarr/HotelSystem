@@ -4,8 +4,16 @@ using HotelSystem.Domain.Models.Abstractions.BaseEntities;
 
 namespace HotelSystem.Services.Services.Interfaces
 {
-    internal interface IBaseService<T> where T : BaseEntity
+    public interface IBaseService<T> 
+        where T : BaseEntity
     {
+
+        /// <summary>
+        /// Creates a new entity asynchronously.
+        /// </summary>
+        /// <param name="entityDTO">The entity to create.</param>
+        /// <returns>An asynchronous operation that returns the created entity.</returns>
+        Task<IBaseResponse<T>> CreateAsync<Tmodel>(Tmodel entityDTO) where Tmodel : BaseDTO;
         /// <summary>
         /// Retrieves all entities.
         /// </summary>
@@ -24,7 +32,7 @@ namespace HotelSystem.Services.Services.Interfaces
         /// </summary>
         /// <param name="employeeDto">The employee object containing the updated details.</param>
         /// <returns>A task representing the asynchronous operation. The task result contains the response indicating the success or failure of the operation.</returns>
-        Task<IBaseResponse<bool>> UpdateAsync(uint id, BaseDTO entitieDto);
+        Task<IBaseResponse<bool>> UpdateAsync<TModel>(TModel entitieDto) where TModel : BaseDTO;
 
         /// <summary>
         /// Deletes the specified employee by their ID.
