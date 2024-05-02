@@ -50,14 +50,36 @@ namespace HotelSystem.Services.Services.Implementations
             }
         }
 
-        public Task<IBaseResponse<T>> GetByIdAsync(uint employeeId)
+        public async Task<IBaseResponse<T>> GetByIdAsync(uint Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var entity = await _repository.GetByIdAsync(Id);
+                ObjectValidator<T>.CheckIsNotNullObject(entity);
+
+                return ResponseFactory<T>.CreateSuccessResponse(entity);
+            }
+            catch (Exception ex)
+            {
+                return ResponseFactory<T>.CreateErrorResponse(ex);
+
+            }
         }
 
-        public Task<IBaseResponse<bool>> UpdateAsync(uint id, BaseDTO entitieDto)
+        public async Task<IBaseResponse<bool>> UpdateAsync(uint id, BaseDTO entitieDto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var entity = await _repository.Update(()entitieDto);
+                ObjectValidator<T>.CheckIsNotNullObject(entity);
+
+                return ResponseFactory<T>.CreateSuccessResponse(entity);
+            }
+            catch (Exception ex)
+            {
+                return ResponseFactory<T>.CreateErrorResponse(ex);
+
+            }
         }
     }
 }

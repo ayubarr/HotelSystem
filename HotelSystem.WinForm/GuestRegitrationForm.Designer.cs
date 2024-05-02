@@ -28,33 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button_GuestRegistr = new Button();
+            button_GuestRegistration = new Button();
+            label_GuestRegistr = new Label();
             SuspendLayout();
             // 
-            // button_GuestRegistr
+            // button_GuestRegistration
             // 
-            button_GuestRegistr.Location = new Point(324, 463);
-            button_GuestRegistr.Name = "button_GuestRegistr";
-            button_GuestRegistr.Size = new Size(313, 42);
-            button_GuestRegistr.TabIndex = 0;
-            button_GuestRegistr.Text = "button1";
-            button_GuestRegistr.UseVisualStyleBackColor = true;
-            button_GuestRegistr.Click += button_GuestRegistr_Click;
+            button_GuestRegistration.Location = new Point(402, 506);
+            button_GuestRegistration.Margin = new Padding(3, 4, 3, 4);
+            button_GuestRegistration.Name = "button_GuestRegistration";
+            button_GuestRegistration.Size = new Size(358, 56);
+            button_GuestRegistration.TabIndex = 0;
+            button_GuestRegistration.Text = "Зарегестрировать гостя";
+            button_GuestRegistration.UseVisualStyleBackColor = true;
+            button_GuestRegistration.Click += button_GuestRegistr_Click;
+            // 
+            // label_GuestRegistr
+            // 
+            label_GuestRegistr.AutoSize = true;
+            label_GuestRegistr.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            label_GuestRegistr.Location = new Point(302, 9);
+            label_GuestRegistr.Name = "label_GuestRegistr";
+            label_GuestRegistr.Size = new Size(554, 41);
+            label_GuestRegistr.TabIndex = 1;
+            label_GuestRegistr.Text = "Регистрация новых жильцов в системе";
             // 
             // GuestRegitrationForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1064, 681);
-            Controls.Add(button_GuestRegistr);
+            ClientSize = new Size(1216, 908);
+            Controls.Add(label_GuestRegistr);
+            Controls.Add(button_GuestRegistration);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "GuestRegitrationForm";
             Text = "GuestRegitrationForm";
             Load += GuestRegitrationForm_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private Button button_GuestRegistr;
+        private Button button_GuestRegistration;
+        private Label label_GuestRegistr;
     }
 }
