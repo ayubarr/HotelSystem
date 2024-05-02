@@ -10,23 +10,21 @@ using System.Windows.Forms;
 
 namespace HotelSystem.WinForm
 {
-    public partial class MainMenu : Form
+    public partial class GuestRegitrationForm : Form
     {
-        public MainMenu()
+        public GuestRegitrationForm()
         {
             InitializeComponent();
         }
 
-        private void MainMenu_Load(object sender, EventArgs e)
+        private void GuestRegitrationForm_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void button_ClientRegistration_Click(object sender, EventArgs e)
+        private void button_GuestRegistr_Click(object sender, EventArgs e)
         {
-            var form = new GuestRegitrationForm();
-            form.Show();
-            Close();          
+
         }
     }
 }

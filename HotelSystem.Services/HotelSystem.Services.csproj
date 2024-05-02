@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HotelSystem.ApiModels\HotelSystem.ApiModels.csproj" />
+    <ProjectReference Include="..\HotelSystem.DAL\HotelSystem.DAL.csproj" />
     <ProjectReference Include="..\HotelSystem.Domain\HotelSystem.Domain.csproj" />
   </ItemGroup>
 

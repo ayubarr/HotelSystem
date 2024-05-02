@@ -40,38 +40,12 @@ namespace HotelSystem.Services.Services.Implementations
                 var user = await _userManager.FindByNameAsync(model.Username);
                 if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
                 {
-                //    var userRoles = await _userManager.GetRolesAsync(user);
-
                     var authClaims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, user.UserName),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     };
 
-                    //foreach (var userRole in userRoles)
-                    //{
-                    //    switch (userRole)
-                    //    {
-                    //        case nameof(PositionType.DefoultUser):
-                    //            authClaims.Add(new Claim(ClaimTypes.Role, "DefoultUser"));
-                    //            break;
-                    //        case nameof(PositionType.Manager):
-                    //            authClaims.Add(new Claim(ClaimTypes.Role, "Manager"));
-                    //            break;
-                    //        case nameof(PositionType.Cleaner):
-                    //            authClaims.Add(new Claim(ClaimTypes.Role, "Cleaner"));
-                    //            break;
-                    //        case nameof(PositionType.Admin):
-                    //            authClaims.Add(new Claim(ClaimTypes.Role, "Admin"));
-                    //            break;
-                    //        case nameof(PositionType.Waiter):
-                    //            authClaims.Add(new Claim(ClaimTypes.Role, "Waiter"));
-                    //            break;
-                    //        default:
-                    //            authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-                    //            break;
-                    //    }
-                    //}
                     var token = GenerateToken(authClaims);
                     var refreshToken = GenerateRefreshToken();
 
