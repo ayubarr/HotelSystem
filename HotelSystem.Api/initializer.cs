@@ -35,6 +35,8 @@ namespace HotelSystem.API
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
             services.AddScoped<IGuestService, GuestService>();
+            //Пример - services.AddScoped<IBaseService<Entity>, BaseService<Entity>>();
+
 
 
             return services;
