@@ -1,8 +1,5 @@
-
 using HotelSystem.API;
 using HotelSystem.DAL.SqlServer.Context;
-using HotelSystem.Domain.Models.Abstractions.BaseEntities;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 

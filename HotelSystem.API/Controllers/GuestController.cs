@@ -1,5 +1,4 @@
 ﻿using HotelSystem.ApiModels.DTOs.EntitiesDTOs.Guest;
-using HotelSystem.Domain.Models.Entities;
 using HotelSystem.Services.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +8,9 @@ namespace HotelSystem.API.Controllers
     [ApiController]
     public class GuestController : ControllerBase
     {
-        private IBaseService<Guest> _guestService;
+        private IGuestService _guestService;
 
-        public GuestController(IBaseService<Guest> guestService)
+        public GuestController(IGuestService guestService)
         {
             _guestService = guestService;
         }

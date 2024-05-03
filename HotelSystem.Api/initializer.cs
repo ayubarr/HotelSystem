@@ -23,18 +23,19 @@ namespace HotelSystem.API
             #region Base_Repositories 
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped(typeof(UserManager<>));
+           // services.AddScoped<IBaseRepository<Guest>, BaseRepository<Guest>>();
+
             #endregion
             return services;
         }
 
         public static IServiceCollection InitializeServices(this IServiceCollection services)
         {
-            services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
-           // services.AddScoped<IBaseService<Guest>, BaseService<Guest>>();
-
             services.AddScoped<IUserStore<Employee>, UserStore<Employee, IdentityRole<uint>, AppDbContext, uint>>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
+            services.AddScoped<IGuestService, GuestService>();
+
 
             return services;
 
@@ -43,7 +44,7 @@ namespace HotelSystem.API
 
         public static IServiceCollection InitializeIdentity(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IdentityDbContext<ApplicationUser, ApplicationRole, uint>, AppDbContext>();
+            //services.AddScoped<IdentityDbContext<ApplicationUser, ApplicationRole, uint>, AppDbContext>();
             services.AddScoped<IAuthManager<Employee>>(provider =>
             {
                 var userManager = provider.GetRequiredService<UserManager<Employee>>();
