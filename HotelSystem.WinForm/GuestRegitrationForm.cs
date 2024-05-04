@@ -91,7 +91,7 @@ namespace HotelSystem.WinForm
                 textBox_MiddleName.BackColor = Color.FromArgb(255, 192, 192);
                 return false;
             }
-            if (dateTimePicker_RegistrationStartDate.Value < dateTimePicker_RegistrationEndDate.Value)
+            if (dateTimePicker_RegistrationStartDate.Value > dateTimePicker_RegistrationEndDate.Value)
             {
                 MessageBox.Show($"Дата начала регистрации не может быть раньше даты окончания регистрации", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
