@@ -19,7 +19,7 @@ namespace HotelSystem.API.Controllers
         public async Task<IActionResult> GetGuests()
         {
             var response = await _guestService.GetAllAsync();
-            return Ok(response);
+            return Ok(response.Data);
         }
 
         [HttpGet("GetGuestById")]
