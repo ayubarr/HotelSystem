@@ -2,6 +2,5 @@
 {
     public abstract class BaseDTO
     {
-      public uint Id { get; set; }
     }
 }

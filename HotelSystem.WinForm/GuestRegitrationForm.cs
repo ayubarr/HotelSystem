@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,13 +18,15 @@ namespace HotelSystem.WinForm
         {
             InitializeComponent();
         }
+        const string DateTimeFormatWinForm = "dd.MM.yyyy HH:mm";
+        const string DateTimeFormatApi = "yyyy-MM-ddTHH:mm:ss.fffZ";
 
         private void GuestRegitrationForm_Load(object sender, EventArgs e)
         {
             dateTimePicker_RegistrationEndDate.Format = DateTimePickerFormat.Custom;
-            dateTimePicker_RegistrationStartDate.CustomFormat = "dd.MM.yyyy HH:mm";
+            dateTimePicker_RegistrationStartDate.CustomFormat = DateTimeFormatWinForm;
             dateTimePicker_RegistrationEndDate.Format = DateTimePickerFormat.Custom;
-            dateTimePicker_RegistrationEndDate.CustomFormat = "dd.MM.yyyy HH:mm";
+            dateTimePicker_RegistrationEndDate.CustomFormat = DateTimeFormatWinForm;
 
         }
 
@@ -36,6 +39,13 @@ namespace HotelSystem.WinForm
                 label_GuestInputError.Visible = true;
                 return;
             }
+
+            DateTime RegistrationStartDateTime = DateTime.ParseExact(dateTimePicker_RegistrationStartDate.Text, DateTimeFormatWinForm, CultureInfo.InvariantCulture);
+            string RegistrationStartDate = RegistrationStartDateTime.ToString(DateTimeFormatApi);
+
+            DateTime RegistrationEndDateTime = DateTime.ParseExact(dateTimePicker_RegistrationStartDate.Text, DateTimeFormatWinForm, CultureInfo.InvariantCulture);
+            string RegistrationEndDate = RegistrationEndDateTime.ToString(DateTimeFormatApi);
+
             string jsonContent = JsonConvert.SerializeObject(new
             {
                 FirstName = textBox_FirstName.Text,
@@ -43,9 +53,11 @@ namespace HotelSystem.WinForm
                 MiddleName = textBox_MiddleName.Text,
                 Email = textBox_Email.Text,
                 PhoneNumber = textBox_PhoneNumber.Text,
-                RegistrationStartDate = dateTimePicker_RegistrationStartDate,
-                RegistrationEndDate = dateTimePicker_RegistrationEndDate
+                RegistrationStartDate,
+                RegistrationEndDate
             });
+
+            var r = dateTimePicker_RegistrationStartDate.Text;
             try
             {
                 using (HttpClient httpClient = new HttpClient())
