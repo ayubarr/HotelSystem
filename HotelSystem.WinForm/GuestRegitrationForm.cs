@@ -124,7 +124,7 @@ namespace HotelSystem.WinForm
         {
             var mainMenu = new MainMenu();
             mainMenu.Show();
-            Close();
+            Visible = false;
 
         }
 

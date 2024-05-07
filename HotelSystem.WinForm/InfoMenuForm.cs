@@ -11,7 +11,7 @@
         {
             var mainMenu = new MainMenu();
             mainMenu.Show();
-            Close();
+            Visible = false;
         }
 
         private void label_Prolongation_Click(object sender, EventArgs e)

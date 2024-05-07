@@ -26,21 +26,21 @@ namespace HotelSystem.WinForm
         {
             var form = new GuestRegitrationForm();
             form.Show();
-            Close();
+            Visible = false;
         }
 
         private void button_GetInformation_Click(object sender, EventArgs e)
         {
             var form = new InfoMenuForm();
             form.Show();
-            Close();
+            Visible = false;
         }
 
         private void button_Reservation_Click(object sender, EventArgs e)
         {
             var form = new ReservationForm();
             form.Show();
-            Close();
+            Visible = false;
         }
 
         private void button_MainMenuExit_Click(object sender, EventArgs e)
