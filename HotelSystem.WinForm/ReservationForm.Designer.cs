@@ -138,6 +138,7 @@
             Name = "ReservationForm";
             Text = "ReservationForm";
             FormClosing += ReservationForm_FormClosing;
+            Load += ReservationForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

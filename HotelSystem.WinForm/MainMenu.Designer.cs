@@ -38,8 +38,8 @@
             button_GetInformation = new Button();
             label_GetInformation = new Label();
             button_MainMenuExit = new Button();
-            button1 = new Button();
-            label_eviction = new Label();
+            button_EvictionFromRoom = new Button();
+            label_EvictionFromRoom = new Label();
             SuspendLayout();
             // 
             // button_Reservation
@@ -101,7 +101,7 @@
             // button_Prolongation
             // 
             button_Prolongation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button_Prolongation.Location = new Point(33, 282);
+            button_Prolongation.Location = new Point(33, 283);
             button_Prolongation.Margin = new Padding(3, 2, 3, 2);
             button_Prolongation.Name = "button_Prolongation";
             button_Prolongation.Size = new Size(360, 38);
@@ -114,7 +114,7 @@
             label_Prolongation.AutoSize = true;
             label_Prolongation.FlatStyle = FlatStyle.System;
             label_Prolongation.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label_Prolongation.Location = new Point(94, 256);
+            label_Prolongation.Location = new Point(94, 257);
             label_Prolongation.Name = "label_Prolongation";
             label_Prolongation.Size = new Size(181, 25);
             label_Prolongation.TabIndex = 6;
@@ -153,35 +153,35 @@
             button_MainMenuExit.UseVisualStyleBackColor = true;
             button_MainMenuExit.Click += button_MainMenuExit_Click;
             // 
-            // button1
+            // button_EvictionFromRoom
             // 
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(33, 390);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(360, 38);
-            button1.TabIndex = 10;
-            button1.Text = "Выселить";
-            button1.UseVisualStyleBackColor = true;
+            button_EvictionFromRoom.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button_EvictionFromRoom.Location = new Point(33, 394);
+            button_EvictionFromRoom.Margin = new Padding(3, 2, 3, 2);
+            button_EvictionFromRoom.Name = "button_EvictionFromRoom";
+            button_EvictionFromRoom.Size = new Size(360, 38);
+            button_EvictionFromRoom.TabIndex = 10;
+            button_EvictionFromRoom.Text = "Выселить";
+            button_EvictionFromRoom.UseVisualStyleBackColor = true;
             // 
-            // label_eviction
+            // label_EvictionFromRoom
             // 
-            label_eviction.AutoSize = true;
-            label_eviction.FlatStyle = FlatStyle.System;
-            label_eviction.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label_eviction.Location = new Point(94, 363);
-            label_eviction.Name = "label_eviction";
-            label_eviction.Size = new Size(202, 25);
-            label_eviction.TabIndex = 11;
-            label_eviction.Text = "Выселение из номера";
+            label_EvictionFromRoom.AutoSize = true;
+            label_EvictionFromRoom.FlatStyle = FlatStyle.System;
+            label_EvictionFromRoom.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label_EvictionFromRoom.Location = new Point(94, 367);
+            label_EvictionFromRoom.Name = "label_EvictionFromRoom";
+            label_EvictionFromRoom.Size = new Size(202, 25);
+            label_EvictionFromRoom.TabIndex = 11;
+            label_EvictionFromRoom.Text = "Выселение из номера";
             // 
             // MainMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1064, 681);
-            Controls.Add(label_eviction);
-            Controls.Add(button1);
+            Controls.Add(label_EvictionFromRoom);
+            Controls.Add(button_EvictionFromRoom);
             Controls.Add(button_MainMenuExit);
             Controls.Add(label_GetInformation);
             Controls.Add(button_GetInformation);
@@ -213,7 +213,7 @@
         private Label label_GetInformation;
 		private Button button_GetInformation;
         private Button button_MainMenuExit;
-        private Button button1;
-        private Label label_eviction;
+        private Button button_EvictionFromRoom;
+        private Label label_EvictionFromRoom;
     }
 }
