@@ -13,5 +13,9 @@
     <ProjectReference Include="..\HotelSystem.Services\HotelSystem.Services.csproj" />
     <ProjectReference Include="..\HotelSystem.API\HotelSystem.API.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
   
 </Project>
