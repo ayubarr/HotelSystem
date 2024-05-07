@@ -98,7 +98,7 @@ namespace HotelSystem.WinForm
         {
             OpenRegistrationForm();
         }
-    
+
         // ћетод, который будет открывать форму регистрации
         private void OpenRegistrationForm()
         {
@@ -117,5 +117,10 @@ namespace HotelSystem.WinForm
             }
         }
         #endregion
+
+        private void AuthForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

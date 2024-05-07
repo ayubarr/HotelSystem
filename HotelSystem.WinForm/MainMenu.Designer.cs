@@ -169,6 +169,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "MainMenu";
             Text = "MainMenu";
+            FormClosing += MainMenu_FormClosing;
             Load += MainMenu_Load;
             ResumeLayout(false);
             PerformLayout();

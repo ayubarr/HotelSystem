@@ -256,6 +256,7 @@
             Controls.Add(button_GuestRegistration);
             Name = "GuestRegitrationForm";
             Text = "GuestRegitrationForm";
+            FormClosing += GuestRegitrationForm_FormClosing;
             Load += GuestRegitrationForm_Load;
             ResumeLayout(false);
             PerformLayout();

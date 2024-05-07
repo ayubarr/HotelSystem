@@ -61,6 +61,7 @@
             Controls.Add(button_back);
             Name = "ReservationForm";
             Text = "ReservationForm";
+            FormClosing += ReservationForm_FormClosing;
             ResumeLayout(false);
         }
 

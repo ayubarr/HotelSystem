@@ -125,7 +125,12 @@ namespace HotelSystem.WinForm
             var mainMenu = new MainMenu();
             mainMenu.Show();
             Close();
-            
+
+        }
+
+        private void GuestRegitrationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

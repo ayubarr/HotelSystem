@@ -23,5 +23,10 @@ namespace HotelSystem.WinForm
             form.Show();
             Close();
         }
+
+        private void ReservationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

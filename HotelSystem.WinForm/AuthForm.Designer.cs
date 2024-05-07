@@ -176,6 +176,7 @@
             Controls.Add(label_entry);
             Name = "AuthForm";
             Text = "Hotel System";
+            FormClosing += AuthForm_FormClosing;
             Load += AuthForm_Load;
             Click += AuthForm_Click;
             ResumeLayout(false);

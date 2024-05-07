@@ -45,19 +45,18 @@
             // 
             label_entryRegistration.AutoSize = true;
             label_entryRegistration.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point);
-            label_entryRegistration.Location = new Point(390, 12);
+            label_entryRegistration.Location = new Point(341, 9);
             label_entryRegistration.Name = "label_entryRegistration";
-            label_entryRegistration.Size = new Size(378, 81);
+            label_entryRegistration.Size = new Size(301, 65);
             label_entryRegistration.TabIndex = 1;
             label_entryRegistration.Text = "Регистрация";
             // 
             // richTextBox_PasswordRegistration
             // 
             richTextBox_PasswordRegistration.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            richTextBox_PasswordRegistration.Location = new Point(258, 323);
-            richTextBox_PasswordRegistration.Margin = new Padding(3, 4, 3, 4);
+            richTextBox_PasswordRegistration.Location = new Point(226, 242);
             richTextBox_PasswordRegistration.Name = "richTextBox_PasswordRegistration";
-            richTextBox_PasswordRegistration.Size = new Size(619, 51);
+            richTextBox_PasswordRegistration.Size = new Size(542, 39);
             richTextBox_PasswordRegistration.TabIndex = 10;
             richTextBox_PasswordRegistration.Text = "";
             // 
@@ -66,10 +65,9 @@
             richTextBox_LoginRegistration.BackColor = SystemColors.Window;
             richTextBox_LoginRegistration.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBox_LoginRegistration.ForeColor = SystemColors.WindowText;
-            richTextBox_LoginRegistration.Location = new Point(258, 181);
-            richTextBox_LoginRegistration.Margin = new Padding(3, 4, 3, 4);
+            richTextBox_LoginRegistration.Location = new Point(226, 136);
             richTextBox_LoginRegistration.Name = "richTextBox_LoginRegistration";
-            richTextBox_LoginRegistration.Size = new Size(619, 51);
+            richTextBox_LoginRegistration.Size = new Size(542, 39);
             richTextBox_LoginRegistration.TabIndex = 9;
             richTextBox_LoginRegistration.Text = "";
             // 
@@ -77,9 +75,9 @@
             // 
             label_PasswordRegistration.AutoSize = true;
             label_PasswordRegistration.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label_PasswordRegistration.Location = new Point(258, 269);
+            label_PasswordRegistration.Location = new Point(226, 202);
             label_PasswordRegistration.Name = "label_PasswordRegistration";
-            label_PasswordRegistration.Size = new Size(136, 46);
+            label_PasswordRegistration.Size = new Size(110, 37);
             label_PasswordRegistration.TabIndex = 8;
             label_PasswordRegistration.Text = "Пароль";
             // 
@@ -87,19 +85,18 @@
             // 
             label_loginRegistration.AutoSize = true;
             label_loginRegistration.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label_loginRegistration.Location = new Point(258, 128);
+            label_loginRegistration.Location = new Point(226, 96);
             label_loginRegistration.Name = "label_loginRegistration";
-            label_loginRegistration.Size = new Size(116, 46);
+            label_loginRegistration.Size = new Size(93, 37);
             label_loginRegistration.TabIndex = 7;
             label_loginRegistration.Text = "Логин";
             // 
             // richTextBox_ConfirmRegistration
             // 
             richTextBox_ConfirmRegistration.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            richTextBox_ConfirmRegistration.Location = new Point(258, 464);
-            richTextBox_ConfirmRegistration.Margin = new Padding(3, 4, 3, 4);
+            richTextBox_ConfirmRegistration.Location = new Point(226, 348);
             richTextBox_ConfirmRegistration.Name = "richTextBox_ConfirmRegistration";
-            richTextBox_ConfirmRegistration.Size = new Size(619, 51);
+            richTextBox_ConfirmRegistration.Size = new Size(542, 39);
             richTextBox_ConfirmRegistration.TabIndex = 10;
             richTextBox_ConfirmRegistration.Text = "";
             // 
@@ -107,19 +104,18 @@
             // 
             label_ConfirmRegistration.AutoSize = true;
             label_ConfirmRegistration.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label_ConfirmRegistration.Location = new Point(258, 411);
+            label_ConfirmRegistration.Location = new Point(226, 308);
             label_ConfirmRegistration.Name = "label_ConfirmRegistration";
-            label_ConfirmRegistration.Size = new Size(394, 46);
+            label_ConfirmRegistration.Size = new Size(314, 37);
             label_ConfirmRegistration.TabIndex = 12;
             label_ConfirmRegistration.Text = "Подтверждение пароля";
             // 
             // button_Registration
             // 
             button_Registration.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            button_Registration.Location = new Point(443, 568);
-            button_Registration.Margin = new Padding(3, 4, 3, 4);
+            button_Registration.Location = new Point(388, 426);
             button_Registration.Name = "button_Registration";
-            button_Registration.Size = new Size(247, 67);
+            button_Registration.Size = new Size(216, 50);
             button_Registration.TabIndex = 13;
             button_Registration.Text = "Зарегестрировать";
             button_Registration.UseCompatibleTextRendering = true;
@@ -131,9 +127,9 @@
             label_ErrorLogin.AutoSize = true;
             label_ErrorLogin.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label_ErrorLogin.ForeColor = Color.Red;
-            label_ErrorLogin.Location = new Point(473, 237);
+            label_ErrorLogin.Location = new Point(414, 178);
             label_ErrorLogin.Name = "label_ErrorLogin";
-            label_ErrorLogin.Size = new Size(194, 28);
+            label_ErrorLogin.Size = new Size(151, 21);
             label_ErrorLogin.TabIndex = 14;
             label_ErrorLogin.Text = "Заполните это поле";
             // 
@@ -142,9 +138,9 @@
             label_ErrorPassword.AutoSize = true;
             label_ErrorPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label_ErrorPassword.ForeColor = Color.Red;
-            label_ErrorPassword.Location = new Point(473, 379);
+            label_ErrorPassword.Location = new Point(414, 284);
             label_ErrorPassword.Name = "label_ErrorPassword";
-            label_ErrorPassword.Size = new Size(194, 28);
+            label_ErrorPassword.Size = new Size(151, 21);
             label_ErrorPassword.TabIndex = 15;
             label_ErrorPassword.Text = "Заполните это поле";
             // 
@@ -153,17 +149,17 @@
             label_ErrorConfirm.AutoSize = true;
             label_ErrorConfirm.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label_ErrorConfirm.ForeColor = Color.Red;
-            label_ErrorConfirm.Location = new Point(473, 520);
+            label_ErrorConfirm.Location = new Point(414, 390);
             label_ErrorConfirm.Name = "label_ErrorConfirm";
-            label_ErrorConfirm.Size = new Size(194, 28);
+            label_ErrorConfirm.Size = new Size(151, 21);
             label_ErrorConfirm.TabIndex = 16;
             label_ErrorConfirm.Text = "Заполните это поле";
             // 
             // RegistrationForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1216, 908);
+            ClientSize = new Size(1064, 681);
             Controls.Add(label_ErrorConfirm);
             Controls.Add(label_ErrorPassword);
             Controls.Add(label_ErrorLogin);
@@ -175,9 +171,9 @@
             Controls.Add(label_PasswordRegistration);
             Controls.Add(label_loginRegistration);
             Controls.Add(label_entryRegistration);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "RegistrationForm";
             Text = "RegistrationForm";
+            FormClosing += RegistrationForm_FormClosing;
             Load += RegistrationForm_Load;
             ResumeLayout(false);
             PerformLayout();

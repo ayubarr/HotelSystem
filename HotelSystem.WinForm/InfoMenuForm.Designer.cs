@@ -183,6 +183,7 @@
             Controls.Add(label_MainMenu);
             Name = "InfoMenuForm";
             Text = "InfoMenuForm";
+            FormClosing += InfoMenuForm_FormClosing;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -52,7 +52,7 @@ namespace HotelSystem.WinForm
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("User registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();   
+                        this.Close();
                     }
                     else
                     {
@@ -63,7 +63,7 @@ namespace HotelSystem.WinForm
                 {
                     MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }     
+            }
         }
 
         private bool CheckLoginAndPassword()
@@ -87,12 +87,18 @@ namespace HotelSystem.WinForm
                 label_ErrorPassword.Visible = true;
                 return false;
             }
-            if (!string.Equals(richTextBox_ConfirmRegistration.Text, richTextBox_PasswordRegistration.Text)) {
+            if (!string.Equals(richTextBox_ConfirmRegistration.Text, richTextBox_PasswordRegistration.Text))
+            {
                 MessageBox.Show($"Пароли должны совпадать", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             button_Registration.Enabled = false;
             return true;
+        }
+
+        private void RegistrationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

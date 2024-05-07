@@ -5,17 +5,11 @@ namespace HotelSystem.WinForm
 {
     internal static class Program
     {
-
-        [DllImport("kernel32.dll")]
-        private static extern bool FreeConsole();
-
-        [DllImport("kernel32.dll")]
-        private static extern IntPtr GetConsoleWindow();
-
-        private static Process apiProcess;
         /// <summary>
-        ///  The main entry point for the application.
+        /// Процессор для запуска Апи проекта и работы с ним
         /// </summary>
+        private static Process apiProcess;
+
         [STAThread]
         internal static void Main()
         {
@@ -33,25 +27,20 @@ namespace HotelSystem.WinForm
             string apiPath = @"..\..\..\..\HotelSystem.Api\bin\Debug\net6.0\HotelSystem.API.exe";
 
             //Настройки для запуска, который будет не заметным пользователю
-            var process = new Process();
-            process.StartInfo.FileName = apiPath;
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.CreateNoWindow = true;
+            apiProcess = new Process();
+            apiProcess.StartInfo.FileName = apiPath;
+            apiProcess.StartInfo.UseShellExecute = false;
+            apiProcess.StartInfo.CreateNoWindow = true;
 
             // Запускаем процесс API проекта
-            Process.Start(apiPath);
+            apiProcess.Start();
         }
 
         private static void OnProcessExit(object sender, EventArgs e)
         {
             // При закрытии приложения завершаем процесс API
             if (!apiProcess.HasExited)
-            {
-                apiProcess.Kill();
-            }
-
-            // Освобождаем консоль
-            FreeConsole();
+                apiProcess.Kill();           
         }
     }
 }
