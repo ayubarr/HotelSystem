@@ -1,9 +1,7 @@
-﻿using HotelSystem.ApiModels.DTOs.EntitiesDTOs.Room;
-using HotelSystem.ApiModels.Response.Helpers;
+﻿using HotelSystem.ApiModels.Response.Helpers;
 using HotelSystem.ApiModels.Response.Interfaces;
 using HotelSystem.DAL.Repository.Interfaces;
 using HotelSystem.Domain.Models.Entities;
-using HotelSystem.Services.Mapping;
 using HotelSystem.Services.Services.Interfaces;
 using HotelSystem.Validation;
 
@@ -23,26 +21,61 @@ namespace HotelSystem.Services.Services.Implementations
             {
                 StringValidator.CheckIsNotNull(roomNumber);
 
+                var room = await _roomRepository.GetRoomByNumberAsync(roomNumber);
+                ObjectValidator<Room>.CheckIsNotNullObject(room);
 
-                _roomRepository.GetRoomByNumberAsync(roomNumber);
+                room.IsBooked = false;
+                room.BookingEndDate = DateTime.Now;
 
+                await _roomRepository.Update(room);
                 return ResponseFactory<bool>.CreateSuccessResponse(true);
             }
             catch (Exception ex)
             {
                 return ResponseFactory<bool>.CreateErrorResponse(ex);
-
             }
         }
 
-        public Task<IBaseResponse<bool>> ProlongationRoom(UpdateRoomDTO entitieDto)
+        public async Task<IBaseResponse<bool>> ProlongationRoom(string roomNumber, DateTime newBookingEndDate)
         {
-            throw new NotImplementedException();
+            try
+            {
+                StringValidator.CheckIsNotNull(roomNumber);
+
+                var room = await _roomRepository.GetRoomByNumberAsync(roomNumber);
+                ObjectValidator<Room>.CheckIsNotNullObject(room);
+
+                room.BookingEndDate = newBookingEndDate;
+
+                await _roomRepository.Update(room);
+                return ResponseFactory<bool>.CreateSuccessResponse(true);
+            }
+            catch (Exception ex)
+            {
+                return ResponseFactory<bool>.CreateErrorResponse(ex);
+            }
         }
 
-        public Task<IBaseResponse<bool>> ReservationRoom(UpdateRoomDTO entitieDto)
+        public async Task<IBaseResponse<bool>> ReservationRoom(string roomNumber, DateTime bookingEndDate, DateTime bookingStartDate)
         {
-            throw new NotImplementedException();
+            try
+            {
+                StringValidator.CheckIsNotNull(roomNumber);
+
+                var room = await _roomRepository.GetRoomByNumberAsync(roomNumber);
+                ObjectValidator<Room>.CheckIsNotNullObject(room);
+
+                room.IsBooked = true;
+                room.BookingStartDate = bookingStartDate;
+                room.BookingEndDate = bookingEndDate;
+
+                await _roomRepository.Update(room);
+                return ResponseFactory<bool>.CreateSuccessResponse(true);
+            }
+            catch (Exception ex)
+            {
+                return ResponseFactory<bool>.CreateErrorResponse(ex);
+            }
         }
     }
 }

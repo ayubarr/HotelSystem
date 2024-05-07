@@ -1,6 +1,7 @@
 ﻿using HotelSystem.Domain.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Data;
 
 namespace HotelSystem.WinForm
 {
@@ -65,7 +66,7 @@ namespace HotelSystem.WinForm
 					var json = await response.Content.ReadAsStringAsync();
 					var guests = JsonConvert.DeserializeObject<IEnumerable<Guest>>(json);
 
-					foreach (var guest in guests)
+                    foreach (var guest in guests)
 					{
 						string res = guest.MiddleName + "\t\t" + guest.FirstName + "\t\t" + guest.LastName;
 						listBox1.Items.Add(res);

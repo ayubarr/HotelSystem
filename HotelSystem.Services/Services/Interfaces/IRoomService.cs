@@ -8,8 +8,8 @@ namespace HotelSystem.Services.Services.Interfaces
 {
     public interface IRoomService : IBaseService<Room>
     {
-        Task<IBaseResponse<bool>> ReservationRoom(UpdateRoomDTO entitieDto);
+        Task<IBaseResponse<bool>> ReservationRoom(string roomNumber, DateTime bookingEndDate, DateTime bookingStartDate);
         Task<IBaseResponse<bool>> EvictionFromRoom(string roomNumber);
-        Task<IBaseResponse<bool>> ProlongationRoom(UpdateRoomDTO entitieDto);
+        Task<IBaseResponse<bool>> ProlongationRoom(string roomNumber, DateTime newBookingEndDate);
     }
 }
