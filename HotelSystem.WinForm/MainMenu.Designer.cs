@@ -37,6 +37,7 @@
             label_Prolongation = new Label();
             button_GetInformation = new Button();
             label_GetInformation = new Label();
+            button_MainMenuExit = new Button();
             SuspendLayout();
             // 
             // button_Reservation
@@ -140,11 +141,22 @@
             label_GetInformation.TabIndex = 8;
             label_GetInformation.Text = "Поиск информации";
             // 
+            // button_MainMenuExit
+            // 
+            button_MainMenuExit.Location = new Point(936, 618);
+            button_MainMenuExit.Name = "button_MainMenuExit";
+            button_MainMenuExit.Size = new Size(116, 51);
+            button_MainMenuExit.TabIndex = 9;
+            button_MainMenuExit.Text = "Выход";
+            button_MainMenuExit.UseVisualStyleBackColor = true;
+            button_MainMenuExit.Click += button_MainMenuExit_Click;
+            // 
             // MainMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1064, 681);
+            Controls.Add(button_MainMenuExit);
             Controls.Add(label_GetInformation);
             Controls.Add(button_GetInformation);
             Controls.Add(label_Prolongation);
@@ -173,5 +185,6 @@
         private Label label_Prolongation;
         private Label label_GetInformation;
 		private Button button_GetInformation;
-	}
+        private Button button_MainMenuExit;
+    }
 }

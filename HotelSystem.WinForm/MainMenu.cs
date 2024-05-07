@@ -42,5 +42,10 @@ namespace HotelSystem.WinForm
             form.Show();
             Close();
         }
+
+        private void button_MainMenuExit_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

@@ -91,7 +91,7 @@ namespace HotelSystem.WinForm
                 MessageBox.Show($"Пароли должны совпадать", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
+            button_Registration.Enabled = false;
             return true;
         }
     }

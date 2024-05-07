@@ -86,6 +86,8 @@ namespace HotelSystem.WinForm
                 label_ErrorPassword.Visible = true;
                 return false;
             }
+            button_Login.Enabled = false;
+            button_GoToRegistration.Enabled = false;
             return true;
         }
 
