@@ -38,6 +38,8 @@
             button_GetInformation = new Button();
             label_GetInformation = new Label();
             button_MainMenuExit = new Button();
+            button1 = new Button();
+            label_eviction = new Label();
             SuspendLayout();
             // 
             // button_Reservation
@@ -90,7 +92,7 @@
             label_ClientRegistration.AutoSize = true;
             label_ClientRegistration.FlatStyle = FlatStyle.System;
             label_ClientRegistration.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label_ClientRegistration.Location = new Point(749, 137);
+            label_ClientRegistration.Location = new Point(725, 137);
             label_ClientRegistration.Name = "label_ClientRegistration";
             label_ClientRegistration.Size = new Size(203, 25);
             label_ClientRegistration.TabIndex = 4;
@@ -112,7 +114,7 @@
             label_Prolongation.AutoSize = true;
             label_Prolongation.FlatStyle = FlatStyle.System;
             label_Prolongation.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label_Prolongation.Location = new Point(104, 256);
+            label_Prolongation.Location = new Point(94, 256);
             label_Prolongation.Name = "label_Prolongation";
             label_Prolongation.Size = new Size(181, 25);
             label_Prolongation.TabIndex = 6;
@@ -121,7 +123,7 @@
             // button_GetInformation
             // 
             button_GetInformation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button_GetInformation.Location = new Point(668, 282);
+            button_GetInformation.Location = new Point(668, 283);
             button_GetInformation.Margin = new Padding(3, 2, 3, 2);
             button_GetInformation.Name = "button_GetInformation";
             button_GetInformation.Size = new Size(360, 38);
@@ -135,11 +137,11 @@
             label_GetInformation.AutoSize = true;
             label_GetInformation.FlatStyle = FlatStyle.System;
             label_GetInformation.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label_GetInformation.Location = new Point(749, 256);
+            label_GetInformation.Location = new Point(725, 256);
             label_GetInformation.Name = "label_GetInformation";
-            label_GetInformation.Size = new Size(184, 25);
+            label_GetInformation.Size = new Size(280, 25);
             label_GetInformation.TabIndex = 8;
-            label_GetInformation.Text = "Поиск информации";
+            label_GetInformation.Text = "Поиск информации о жильцах";
             // 
             // button_MainMenuExit
             // 
@@ -151,11 +153,35 @@
             button_MainMenuExit.UseVisualStyleBackColor = true;
             button_MainMenuExit.Click += button_MainMenuExit_Click;
             // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(33, 390);
+            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(360, 38);
+            button1.TabIndex = 10;
+            button1.Text = "Выселить";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // label_eviction
+            // 
+            label_eviction.AutoSize = true;
+            label_eviction.FlatStyle = FlatStyle.System;
+            label_eviction.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label_eviction.Location = new Point(94, 363);
+            label_eviction.Name = "label_eviction";
+            label_eviction.Size = new Size(202, 25);
+            label_eviction.TabIndex = 11;
+            label_eviction.Text = "Выселение из номера";
+            // 
             // MainMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1064, 681);
+            Controls.Add(label_eviction);
+            Controls.Add(button1);
             Controls.Add(button_MainMenuExit);
             Controls.Add(label_GetInformation);
             Controls.Add(button_GetInformation);
@@ -187,5 +213,7 @@
         private Label label_GetInformation;
 		private Button button_GetInformation;
         private Button button_MainMenuExit;
+        private Button button1;
+        private Label label_eviction;
     }
 }

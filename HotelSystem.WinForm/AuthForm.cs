@@ -37,7 +37,7 @@ namespace HotelSystem.WinForm
                     // Проверяем успешность запроса
                     if (response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("User registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Вы успешно авторизованы", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Visible = false;
                         var mainMenu = new MainMenu();
                         mainMenu.Show();
@@ -45,7 +45,7 @@ namespace HotelSystem.WinForm
                     else
                     {
                         // Обрабатываем ошибку
-                        MessageBox.Show($"Registration failed with status code {response.StatusCode}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Ошибка авторизации {response.StatusCode}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
