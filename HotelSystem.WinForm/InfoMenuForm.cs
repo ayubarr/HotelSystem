@@ -34,13 +34,22 @@ namespace HotelSystem.WinForm
 
 		}
 
-		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		private void button_InfoClients_Click(object sender, EventArgs e)
 		{
 
 		}
 
-		private async void button_InfoGuest_Click(object sender, EventArgs e)
+		private async void button_InfoRooms_Click(object sender, EventArgs e)
 		{
+			//if (!CheckLoginAndPassword())
+			//{
+			//	label_GuestInputError.Visible = true;
+			//	return;
+			//}
+			//string jsonContent = JsonConvert.SerializeObject(new
+			//{
+			//	FirstName = listBox1.Text,
+			//});
 			try
 			{
 				using (HttpClient httpClient = new HttpClient())
@@ -57,7 +66,7 @@ namespace HotelSystem.WinForm
 					var json = await response.Content.ReadAsStringAsync();
 					var guests = JsonConvert.DeserializeObject<IEnumerable<Guest>>(json);
 
-					foreach (var guest in guests)
+                    foreach (var guest in guests)
 					{
 						string res = guest.MiddleName + "\t\t" + guest.FirstName + "\t\t" + guest.LastName;
 						listBox1.Items.Add(res);
@@ -73,27 +82,49 @@ namespace HotelSystem.WinForm
 			}
 		}
 
-		private async void CreateDataGuestTable(IEnumerable<Guest>? guests)
-		{
-			// Создаем DataTable и добавляем в него данные
-			DataTable dTGuest = new DataTable();
-
-			dTGuest.Columns.Add("Фамилия");
-			dTGuest.Columns.Add("Имя");
-			dTGuest.Columns.Add("Отчество");
-			foreach (var guest in guests)
-			{
-				
-				dTGuest.Rows.Add(guest.MiddleName, guest.FirstName, guest.LastName);
-			}
-
-			// Связываем DataGridView с DataTable
-			dataGridView1.DataSource = dTGuest;
-		}
-
 		private void InfoMenuForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			Environment.Exit(0);
 		}
+
+		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+
+		//private bool CheckLoginAndPassword()
+		//{
+		//	if (string.IsNullOrEmpty(textBox_FirstName.Text))
+		//	{
+		//		textBox_FirstName.BackColor = Color.FromArgb(255, 192, 192);
+		//		return false;
+		//	}
+		//	if (string.IsNullOrEmpty(textBox_LastName.Text))
+		//	{
+		//		textBox_LastName.BackColor = Color.FromArgb(255, 192, 192);
+		//		return false;
+		//	}
+		//	if (string.IsNullOrEmpty(textBox_MiddleName.Text))
+		//	{
+		//		textBox_MiddleName.BackColor = Color.FromArgb(255, 192, 192);
+		//		return false;
+		//	}
+		//	if (dateTimePicker_RegistrationStartDate.Value < dateTimePicker_RegistrationEndDate.Value)
+		//	{
+		//		MessageBox.Show($"Дата начала регистрации не может быть раньше даты окончания регистрации", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+		//		return false;
+		//	}
+		//	if (string.IsNullOrEmpty(textBox_Email.Text))
+		//	{
+		//		textBox_Email.Text = "example@mail.com";
+		//	}
+		//	if (string.IsNullOrEmpty(textBox_PhoneNumber.Text))
+		//	{
+		//		textBox_PhoneNumber.Text = "+XXX-XXX-XXX";
+		//	}
+
+		//	return true;
+		//}
 	}
 }
