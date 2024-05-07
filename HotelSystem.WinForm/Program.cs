@@ -31,7 +31,6 @@ namespace HotelSystem.WinForm
             apiProcess.StartInfo.FileName = apiPath;
             apiProcess.StartInfo.UseShellExecute = false;
             apiProcess.StartInfo.CreateNoWindow = true;
-
             // Запускаем процесс API проекта
             apiProcess.Start();
         }

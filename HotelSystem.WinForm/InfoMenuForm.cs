@@ -1,4 +1,8 @@
-﻿namespace HotelSystem.WinForm
+﻿using HotelSystem.Domain.Models.Entities;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+
+namespace HotelSystem.WinForm
 {
     public partial class InfoMenuForm : Form
     {
@@ -51,14 +55,15 @@
                 {
                     httpClient.DefaultRequestHeaders.Add("accept", "*/*");
 
-                    HttpResponseMessage response = await httpClient.GetAsync("https://localhost:5001/api/Guest/GetGuests");
+                    var response = await httpClient.GetAsync("https://localhost:5001/api/Guest/GetGuests");
 
                     // Проверяем успешность запроса
                     if (!response.IsSuccessStatusCode)
                     {
                         throw new Exception(response.RequestMessage.ToString());
                     }
-                    var resultInfo = response.Content.ToString();
+                    var json = await response.Content.ReadAsStringAsync();
+                    var guests = JsonConvert.DeserializeObject<IEnumerable<Guest>>(json);
 
                 }
 
