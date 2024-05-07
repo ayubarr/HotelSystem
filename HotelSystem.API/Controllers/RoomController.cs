@@ -67,7 +67,7 @@ namespace HotelSystem.API.Controllers
 
 
         [HttpPost("CreateRoom")]
-        public async Task<IActionResult> CreateRoom(CreateGuestDTO model)
+        public async Task<IActionResult> CreateRoom(CreateRoomDTO model)
         {
             var response = await _roomService.CreateAsync(model);
             return Ok(response);
