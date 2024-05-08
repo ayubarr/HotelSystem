@@ -1,4 +1,5 @@
-﻿using HotelSystem.ApiModels.Response.Helpers;
+﻿using HotelSystem.ApiModels.DTOs.EntitiesDTOs.Payment;
+using HotelSystem.ApiModels.Response.Helpers;
 using HotelSystem.ApiModels.Response.Interfaces;
 using HotelSystem.DAL.Repository.Interfaces;
 using HotelSystem.Domain.Models.Entities;

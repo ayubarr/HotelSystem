@@ -1,5 +1,7 @@
 ﻿using HotelSystem.ApiModels.DTOs.EntitiesDTOs.Guest;
+using HotelSystem.ApiModels.DTOs.EntitiesDTOs.Payment;
 using HotelSystem.ApiModels.DTOs.EntitiesDTOs.Room;
+using HotelSystem.Domain.Models.Entities;
 using HotelSystem.Services.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +12,11 @@ namespace HotelSystem.API.Controllers
     public class RoomController : ControllerBase
     {
         private readonly IRoomService _roomService;
-        public RoomController(IRoomService roomService)
+        private readonly IBaseService<Payment> _basePaymentService;
+        public RoomController(IRoomService roomService, IBaseService<Payment> basePaymentService)
         {
             _roomService = roomService;
+            _basePaymentService = basePaymentService;
         }
 
         [HttpGet("GetRooms")]
@@ -45,9 +49,10 @@ namespace HotelSystem.API.Controllers
         }
 
         [HttpPut("ReservationRoom")]
-        public async Task<IActionResult> ReservationRoom(string roomNumber, DateTime bookingEndDate, DateTime bookingStartDate)
+        public async Task<IActionResult> ReservationRoom(CreatePaymentDTO paymentInfo, string roomNumber, DateTime bookingEndDate, DateTime bookingStartDate)
         {
             var response = await _roomService.ReservationRoom(roomNumber, bookingEndDate, bookingStartDate);
+            await _basePaymentService.CreateAsync(paymentInfo);
             return Ok(response);
         }
 

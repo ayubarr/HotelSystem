@@ -1,4 +1,5 @@
 ﻿using HotelSystem.ApiModels.DTOs.BaseDTOs;
+using HotelSystem.ApiModels.DTOs.EntitiesDTOs.Payment;
 using HotelSystem.ApiModels.DTOs.EntitiesDTOs.Room;
 using HotelSystem.ApiModels.Response.Interfaces;
 using HotelSystem.DAL.Repository.Interfaces;
