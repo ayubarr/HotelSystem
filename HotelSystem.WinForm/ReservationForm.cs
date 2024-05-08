@@ -126,24 +126,17 @@ namespace HotelSystem.WinForm
             var date = DateTime.Now;
             string description = "оплата за бронь";
 
-            // Создаем объект CreatePaymentDTO и заполняем его свойства
-            var paymentInfo = new CreatePaymentDTO
-            {
-                GuestId = guestId,
-                Amount = amount,
-                Date = date,
-                Description = description
-            };
 
             // Формируем JSON-строку с полученными значениями
             string jsonContent = JsonConvert.SerializeObject(new
             {
-                paymentInfo = paymentInfo,
-                roomNumber = selectedRoom.ToString(),
-                bookingStartDate = RegistrationStartDate,
-                bookingEndDate = RegistrationEndDate,
+                GuestId = guestId,
+                Amount = amount,
+                Date = date,
+                Description = description,
             });
 
+            string url = $"https://localhost:5001/api/Room/ReservationRoom?roomNumber={selectedRoom}&bookingStartDate={RegistrationStartDate}&bookingEndDate={RegistrationEndDate}";
 
 
             // Создаем экземпляр HttpClient
@@ -153,14 +146,15 @@ namespace HotelSystem.WinForm
                 {
                     client.DefaultRequestHeaders.Add("accept", "*/*");
 
-                    HttpResponseMessage response = await client.PutAsync("https://localhost:5001/api/Room/ReservationRoom",
-                        new StringContent(jsonContent, Encoding.UTF8, "application/json"));
+                    HttpResponseMessage response = await client.PutAsync(url, new StringContent(jsonContent, Encoding.UTF8, "application/json"));
 
                     // Проверяем успешность запроса
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Вы успешно Забронировали комнату", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        this.Visible = false;
+                        var MainMenuForm = new MainMenu();
+                        MainMenuForm.Show();
                     }
                     else
                     {
@@ -172,6 +166,11 @@ namespace HotelSystem.WinForm
                 {
                     // Обрабатываем исключение
                     MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    button_Reservation.Enabled = true;
+                    button_back.Enabled = true;
                 }
             }
         }
