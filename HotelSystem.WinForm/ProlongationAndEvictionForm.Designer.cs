@@ -30,6 +30,11 @@
         {
             button_back = new Button();
             dataGridViewRooms = new DataGridView();
+            button_Prolongation = new Button();
+            label_Prolongation = new Label();
+            textBox_Prolongation = new TextBox();
+            button_Eviction = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRooms).BeginInit();
             SuspendLayout();
             // 
@@ -53,11 +58,65 @@
             dataGridViewRooms.Size = new Size(1040, 509);
             dataGridViewRooms.TabIndex = 23;
             // 
+            // button_Prolongation
+            // 
+            button_Prolongation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button_Prolongation.Location = new Point(38, 609);
+            button_Prolongation.Name = "button_Prolongation";
+            button_Prolongation.Size = new Size(224, 60);
+            button_Prolongation.TabIndex = 24;
+            button_Prolongation.Text = "Продлить";
+            button_Prolongation.UseVisualStyleBackColor = true;
+            button_Prolongation.Click += button_Prolongation_Click;
+            // 
+            // label_Prolongation
+            // 
+            label_Prolongation.AutoSize = true;
+            label_Prolongation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label_Prolongation.Location = new Point(38, 543);
+            label_Prolongation.Name = "label_Prolongation";
+            label_Prolongation.Size = new Size(224, 21);
+            label_Prolongation.TabIndex = 25;
+            label_Prolongation.Text = "Продлить выбранные номера";
+            // 
+            // textBox_Prolongation
+            // 
+            textBox_Prolongation.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox_Prolongation.Location = new Point(38, 567);
+            textBox_Prolongation.Name = "textBox_Prolongation";
+            textBox_Prolongation.Size = new Size(224, 36);
+            textBox_Prolongation.TabIndex = 26;
+            // 
+            // button_Eviction
+            // 
+            button_Eviction.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button_Eviction.Location = new Point(533, 610);
+            button_Eviction.Name = "button_Eviction";
+            button_Eviction.Size = new Size(224, 60);
+            button_Eviction.TabIndex = 27;
+            button_Eviction.Text = "Выселить";
+            button_Eviction.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(533, 582);
+            label1.Name = "label1";
+            label1.Size = new Size(241, 21);
+            label1.TabIndex = 28;
+            label1.Text = "Освободить выбранные номера";
+            // 
             // ProlongationAndEvictionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1064, 681);
+            Controls.Add(label1);
+            Controls.Add(button_Eviction);
+            Controls.Add(textBox_Prolongation);
+            Controls.Add(label_Prolongation);
+            Controls.Add(button_Prolongation);
             Controls.Add(dataGridViewRooms);
             Controls.Add(button_back);
             Name = "ProlongationAndEvictionForm";
@@ -66,11 +125,17 @@
             Load += ProlongationAndEvictionForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewRooms).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button button_back;
         private DataGridView dataGridViewRooms;
+        private Button button_Prolongation;
+        private Label label_Prolongation;
+        private TextBox textBox_Prolongation;
+        private Button button_Eviction;
+        private Label label1;
     }
 }
