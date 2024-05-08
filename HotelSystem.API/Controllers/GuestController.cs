@@ -26,7 +26,7 @@ namespace HotelSystem.API.Controllers
         }
 
         [HttpGet("GetGuestLastPayment")]
-        public async Task<IActionResult> GetGuestPayments(uint guestId)
+        public async Task<IActionResult> GetGuestLastPayment(uint guestId)
         {
             var response = await _basePaymentService.GuestLastPaymentByGuestIdAsync(guestId);
             return Ok(response.Data);

@@ -25,7 +25,11 @@ namespace HotelSystem.Services.Services.Implementations
         {
             try
             {
-                var guestPayment = _repository.GetAll().Where(p => p.GuestId == Id).LastOrDefault();
+                var guestPayment = _repository.GetAll()
+                        .Where(p => p.GuestId == Id)
+                        .OrderByDescending(p => p.Date)
+                        .LastOrDefault();
+
 
                 ObjectValidator<Payment>.CheckIsNotNullObject(guestPayment);
                 return ResponseFactory<Payment>.CreateSuccessResponse(guestPayment);

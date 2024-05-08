@@ -140,35 +140,15 @@ namespace HotelSystem.WinForm
 
 			foreach (var guest in guests)
 			{
-				string? strPaymentAmount = "Пусто";
-				string strPaymentDate = "Пусто";
-				//Payment? guestPayment;
-				//List<Payment>? payments = guest.Payments;
-				//if (payments != null)
-				//{
-				//	foreach (var payment in payments)
-				//	{
-				//		if (payment.Description == "оплата за бронь")
-				//		{
-				//			guestPayment = payment;
-				//			if (guestPayment != null)
-				//			{
-				//				strPaymentAmount = payment.Amount.ToString();
-				//				if (string.IsNullOrEmpty(strPaymentAmount))
-				//					strPaymentAmount = "Пусто";
-				//				strPaymentDate = payment.Date.ToString();
-				//			}
-				//			break;
-				//		}
-				//	}
-				//}
+				string strPaymentAmount = "Пусто";
+				string strPaymentDate = "Пусто";				
 				try
 				{
 					using (HttpClient httpClient = new HttpClient())
 					{
 						httpClient.DefaultRequestHeaders.Add("accept", "*/*");
-						var response = await httpClient.GetAsync("https://localhost:5001/api/Guest/GetGuestLastPayment/GetGuestPayments"
-							);
+                        string url = $"https://localhost:5001/api/Guest/GetGuestLastPayment?guestId={guest.Id}";
+                        var response = await httpClient.GetAsync(url);
 						// Проверяем успешность запроса
 						if (!response.IsSuccessStatusCode)
 						{
@@ -176,8 +156,12 @@ namespace HotelSystem.WinForm
 						}
 						var json = await response.Content.ReadAsStringAsync();
 						Payment? payment = JsonConvert.DeserializeObject<Payment>(json);
-						strPaymentAmount = payment.Amount.ToString();
-						strPaymentDate = payment.Date.ToString();
+						if (payment != null)
+						{
+                            strPaymentAmount = payment.Amount.ToString();
+                            strPaymentDate = payment.Date.ToString();
+                        }
+
 					}
 				}
 				catch (Exception ex)
