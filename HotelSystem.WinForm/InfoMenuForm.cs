@@ -38,6 +38,7 @@ namespace HotelSystem.WinForm
 
 		private async void button_GetInfoGuests_Click(object sender, EventArgs e)
 		{
+			
 			IEnumerable<Guest>? guests = await GetGuests();
 
 			listBoxNames.Items.Clear();
@@ -51,7 +52,6 @@ namespace HotelSystem.WinForm
 				string res = guest.FirstName + "\t\t\t" + guest.RegistrationStartDate + "\t\t" + guest.RegistrationEndDate + "\t\t" + guest.Id;
 				listBoxNames.Items.Add(res);
 				//Console.WriteLine(guest.FirstName); 
-				guest.Payments
 			}
 		}
 
@@ -122,11 +122,60 @@ namespace HotelSystem.WinForm
 			dataColumn.MaxLength = 500;
 			dataTable.Columns.Add(dataColumn);
 
+			dataColumn = new DataColumn();
+			dataColumn.DataType = typeof(string);
+			dataColumn.ColumnName = "Оплата за бронь";
+			dataColumn.MaxLength = 500;
+			dataTable.Columns.Add(dataColumn);
+
+			dataColumn = new DataColumn();
+			dataColumn.DataType = typeof(string);
+			dataColumn.ColumnName = "Дата оплаты";
+			dataColumn.MaxLength = 500;
+			dataTable.Columns.Add(dataColumn);
+
+
+
 			foreach (var guest in guests)
 			{
-				dataTable.Rows.Add(guest.LastName, guest.FirstName, guest.MiddleName, guest.RegistrationStartDate, guest.RegistrationEndDate, guest.Email, guest.PhoneNumber);
+				string? strPaymentAmount = "Пусто";
+				string strPaymentDate = "Пусто";
+				Payment? guestPayment;
+				List<Payment>? payments = guest.Payments;
+				if (payments != null)
+				{
+					foreach (var payment in payments)
+					{
+						if (payment.Description == "оплата за бронь")
+						{
+							guestPayment = payment;
+							if (guestPayment != null)
+							{
+								strPaymentAmount = payment.Amount.ToString();
+								if (string.IsNullOrEmpty(strPaymentAmount))
+									strPaymentAmount = "Пусто";
+								strPaymentDate = payment.Date.ToString();
+							}
+							break;
+						}
+					}
+				}
+
+				dataTable.Rows.Add(
+					guest.LastName,
+					guest.FirstName,
+					guest.MiddleName,
+					guest.RegistrationStartDate,
+					guest.RegistrationEndDate,
+					guest.Email,
+					guest.PhoneNumber,
+					strPaymentAmount,
+					strPaymentDate
+					); 
 			}
 			// Связываем DataGridView с DataTable
+
+
 			dataGridViewMoreInfoGuests.DataSource = dataTable;
 		}
 
