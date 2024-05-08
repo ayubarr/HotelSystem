@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HotelSystem.Domain.Models.Entities;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,12 +37,7 @@ namespace HotelSystem.WinForm
 			Visible = false;
 		}
 
-		private void Button_Update_Click(object sender, EventArgs e)
-		{
-
-		}
-		
-		private async void GetRooms()
+		private async void Button_Update_Click(object sender, EventArgs e)
 		{
 			try
 			{
@@ -55,7 +52,13 @@ namespace HotelSystem.WinForm
 					{
 						MessageBox.Show("При получении комнат произошла ошибка", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
+					var json = await response.Content.ReadAsStringAsync();
+					IEnumerable<Room>? rooms = JsonConvert.DeserializeObject<IEnumerable<Room>?>(json);
 
+					foreach (Room room in rooms)
+					{
+						
+					}
 				}
 			}
 			catch (Exception ex)
@@ -63,6 +66,11 @@ namespace HotelSystem.WinForm
 				// Обрабатываем исключение
 				MessageBox.Show($"При получении комнат возникла ошибка: \n\r{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
+		}
+		
+		private async Task<IEnumerable<Room>?> GetRooms()
+		{
+			return null;
 		} 
 	}
 }
