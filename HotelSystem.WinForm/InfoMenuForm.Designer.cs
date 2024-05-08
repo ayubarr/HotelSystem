@@ -36,6 +36,7 @@
 			label_Reservation = new Label();
 			button_MoreInfoGuests = new Button();
 			dataGridViewMoreInfoGuests = new DataGridView();
+			button_back2 = new Button();
 			((System.ComponentModel.ISupportInitialize)dataGridViewGuests).BeginInit();
 			((System.ComponentModel.ISupportInitialize)dataGridViewMoreInfoGuests).BeginInit();
 			SuspendLayout();
@@ -65,7 +66,7 @@
 			// 
 			listBox1.FormattingEnabled = true;
 			listBox1.ItemHeight = 15;
-			listBox1.Items.AddRange(new object[] { "Фамилия\t\tИмя\t\tОтчество" });
+			listBox1.Items.AddRange(new object[] { "\tИмя\t" });
 			listBox1.Location = new Point(34, 90);
 			listBox1.Name = "listBox1";
 			listBox1.Size = new Size(360, 199);
@@ -73,12 +74,18 @@
 			// 
 			// dataGridViewGuests
 			// 
+			dataGridViewGuests.AllowUserToAddRows = false;
+			dataGridViewGuests.AllowUserToDeleteRows = false;
+			dataGridViewGuests.AllowUserToResizeColumns = false;
+			dataGridViewGuests.AllowUserToResizeRows = false;
 			dataGridViewGuests.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			dataGridViewGuests.Location = new Point(34, 397);
 			dataGridViewGuests.Name = "dataGridViewGuests";
+			dataGridViewGuests.RowHeadersVisible = false;
 			dataGridViewGuests.RowTemplate.Height = 25;
 			dataGridViewGuests.Size = new Size(360, 177);
 			dataGridViewGuests.TabIndex = 29;
+			dataGridViewGuests.TabStop = false;
 			dataGridViewGuests.CellContentClick += dataGridViewGuests_CellContentClick;
 			// 
 			// button_InfoGuests
@@ -118,12 +125,31 @@
 			// 
 			// dataGridViewMoreInfoGuests
 			// 
+			dataGridViewMoreInfoGuests.AllowUserToAddRows = false;
+			dataGridViewMoreInfoGuests.AllowUserToDeleteRows = false;
+			dataGridViewMoreInfoGuests.AllowUserToResizeColumns = false;
+			dataGridViewMoreInfoGuests.AllowUserToResizeRows = false;
 			dataGridViewMoreInfoGuests.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewMoreInfoGuests.Location = new Point(423, 397);
+			dataGridViewMoreInfoGuests.Location = new Point(3, 2);
 			dataGridViewMoreInfoGuests.Name = "dataGridViewMoreInfoGuests";
+			dataGridViewMoreInfoGuests.RowHeadersVisible = false;
 			dataGridViewMoreInfoGuests.RowTemplate.Height = 25;
-			dataGridViewMoreInfoGuests.Size = new Size(360, 177);
+			dataGridViewMoreInfoGuests.Size = new Size(891, 679);
 			dataGridViewMoreInfoGuests.TabIndex = 31;
+			dataGridViewMoreInfoGuests.TabStop = false;
+			dataGridViewMoreInfoGuests.Visible = false;
+			// 
+			// button_back2
+			// 
+			button_back2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+			button_back2.Location = new Point(900, 609);
+			button_back2.Name = "button_back2";
+			button_back2.Size = new Size(152, 60);
+			button_back2.TabIndex = 32;
+			button_back2.Text = "Вернуться назад";
+			button_back2.UseVisualStyleBackColor = true;
+			button_back2.Visible = false;
+			button_back2.Click += button_back2_click;
 			// 
 			// InfoMenuForm
 			// 
@@ -131,6 +157,7 @@
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(1064, 681);
 			Controls.Add(dataGridViewMoreInfoGuests);
+			Controls.Add(button_back2);
 			Controls.Add(button_MoreInfoGuests);
 			Controls.Add(dataGridViewGuests);
 			Controls.Add(listBox1);
@@ -157,5 +184,6 @@
 		private Label label_Reservation;
 		private Button button_MoreInfoGuests;
 		private DataGridView dataGridViewMoreInfoGuests;
+		private Button button_back2;
 	}
 }
