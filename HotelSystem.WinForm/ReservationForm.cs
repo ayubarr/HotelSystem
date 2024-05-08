@@ -109,10 +109,12 @@ namespace HotelSystem.WinForm
         {
             if (!CheckGuestCodeAndAmount()) return;
 
-            var selectedRoom = listBox_StandartRooms.SelectedIndex != -1 ? listBox_StandartRooms.SelectedItem
-                : listBox_StandartRooms.SelectedIndex != -1 ? listBox_StandartRooms.SelectedItem
+            var selectedRoom = 
+                listBox_StandartRooms.SelectedIndex != -1 ? listBox_StandartRooms.SelectedItem
+                : listBox_LuxRooms.SelectedIndex != -1 ? listBox_StandartRooms.SelectedItem
                 : listBox_VipRooms.SelectedIndex != -1 ? listBox_VipRooms.SelectedItem : "";
 
+            selectedRoom = selectedRoom.ToString().Replace("(Занято)", "").Trim();
 
             DateTime RegistrationStartDateTime = DateTime.ParseExact(dateTimePicker_RegistrationStartDate.Text, DateTimeFormatWinForm, CultureInfo.InvariantCulture);
             string RegistrationStartDate = RegistrationStartDateTime.ToString(DateTimeFormatApi);
