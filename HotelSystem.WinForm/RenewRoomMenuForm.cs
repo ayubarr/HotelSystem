@@ -1,4 +1,7 @@
-﻿using System;
+﻿using HotelSystem.Domain.Models.Entities;
+using HotelSystem.Domain.Models.Enums;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +17,10 @@ namespace HotelSystem.WinForm
 {
 	public partial class RenewRoomMenuForm : Form
 	{
+
+		private const string DateTimeFormatApi = "yyyy-MM-ddTHH:mm:ss.fffZ";
+		private const string DateTimeFormatWinForm = "dd.MM.yyyy HH:mm";
+
 		public RenewRoomMenuForm()
 		{
 			InitializeComponent();
@@ -35,34 +42,64 @@ namespace HotelSystem.WinForm
 			Visible = false;
 		}
 
-		private void Button_Update_Click(object sender, EventArgs e)
+		private async void Button_Update_Click(object sender, EventArgs e)
 		{
-
-		}
-		
-		private async void GetRooms()
-		{
+			//dateTimePicker_RegistrationEndDate.Format = DateTimePickerFormat.Custom;
+			//dateTimePicker_RegistrationStartDate.CustomFormat = DateTimeFormatWinForm;
+			//dateTimePicker_RegistrationEndDate.Format = DateTimePickerFormat.Custom;
+			//dateTimePicker_RegistrationEndDate.CustomFormat = DateTimeFormatWinForm;
 			try
 			{
 				using (HttpClient httpClient = new HttpClient())
 				{
 					httpClient.DefaultRequestHeaders.Add("accept", "*/*");
 
-					HttpResponseMessage response = await httpClient.GetAsync("https://localhost:5001/api/Rooms/GetRooms");
+					var response = await httpClient.GetAsync("https://localhost:5001/api/Room/GetRooms");
 
-					// Проверяем успешность запроса
 					if (!response.IsSuccessStatusCode)
 					{
-						MessageBox.Show("При получении комнат произошла ошибка", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+						throw new Exception(response.RequestMessage.ToString());
 					}
+					var json = await response.Content.ReadAsStringAsync();
+					var rooms = JsonConvert.DeserializeObject<IEnumerable<Room>>(json);
 
+
+					foreach (var room in rooms)
+					{
+						string res = room.Number;
+						listBox_LuxRooms.Items.Add(res);
+
+						//string res = room.Number += room.IsBooked ? "(Занято)" : "";
+						//switch (room.Type)
+						//{
+						//	case RoomType.Luxe:
+						//		listBox_LuxRooms.Items.Add(res);
+						//		break;
+						//	case RoomType.Vip:
+						//		listBox_VipRooms.Items.Add(res);
+						//		break;
+
+						//	default:
+						//		listBox_StandartRooms.Items.Add(res);
+						//		break;
+						//}
+					}
 				}
 			}
 			catch (Exception ex)
 			{
-				// Обрабатываем исключение
-				MessageBox.Show($"При получении комнат возникла ошибка: \n\r{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show($"При добавлении нового гостя возникла ошибка: \n\r{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-		} 
+		}
+
+		private async Task<IEnumerable<Room>?> GetRooms()
+		{
+			return null;
+		}
+
+		private void label_VipRooms_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

@@ -38,6 +38,8 @@
 			button_GetInformation = new Button();
 			label_GetInformation = new Label();
 			button_MainMenuExit = new Button();
+			label1 = new Label();
+			button_delcreate_menu = new Button();
 			SuspendLayout();
 			// 
 			// button_Reservation
@@ -152,11 +154,36 @@
 			button_MainMenuExit.UseVisualStyleBackColor = true;
 			button_MainMenuExit.Click += button_MainMenuExit_Click;
 			// 
+			// label1
+			// 
+			label1.AutoSize = true;
+			label1.FlatStyle = FlatStyle.System;
+			label1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+			label1.Location = new Point(64, 392);
+			label1.Name = "label1";
+			label1.Size = new Size(239, 25);
+			label1.TabIndex = 11;
+			label1.Text = "Удалить/Добавить номер ";
+			// 
+			// button_delcreate_menu
+			// 
+			button_delcreate_menu.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			button_delcreate_menu.Location = new Point(33, 419);
+			button_delcreate_menu.Margin = new Padding(3, 2, 3, 2);
+			button_delcreate_menu.Name = "button_delcreate_menu";
+			button_delcreate_menu.Size = new Size(360, 38);
+			button_delcreate_menu.TabIndex = 10;
+			button_delcreate_menu.Text = "Удалить/Добавить";
+			button_delcreate_menu.UseVisualStyleBackColor = true;
+			button_delcreate_menu.Click += button_DelCreateMenu_Click;
+			// 
 			// MainMenu
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(1064, 681);
+			Controls.Add(label1);
+			Controls.Add(button_delcreate_menu);
 			Controls.Add(button_MainMenuExit);
 			Controls.Add(label_GetInformation);
 			Controls.Add(button_GetInformation);
@@ -188,5 +215,7 @@
         private Label label_GetInformation;
 		private Button button_GetInformation;
         private Button button_MainMenuExit;
-    }
+		private Label label1;
+		private Button button_delcreate_menu;
+	}
 }
