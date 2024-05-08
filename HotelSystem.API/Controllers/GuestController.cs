@@ -1,4 +1,5 @@
 ﻿using HotelSystem.ApiModels.DTOs.EntitiesDTOs.Guest;
+using HotelSystem.Domain.Models.Entities;
 using HotelSystem.Services.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,16 +10,25 @@ namespace HotelSystem.API.Controllers
     public class GuestController : ControllerBase
     {
         private readonly IGuestService _guestService;
+        private readonly IPaymentService _basePaymentService;
 
-        public GuestController(IGuestService guestService)
+        public GuestController(IGuestService guestService, IPaymentService basePaymentService)
         {
             _guestService = guestService;
+            _basePaymentService = basePaymentService;
         }
 
         [HttpGet("GetGuests")]
         public async Task<IActionResult> GetGuests()
         {
             var response = await _guestService.GetAllAsync();
+            return Ok(response.Data);
+        }
+
+        [HttpGet("GetGuestLastPayment")]
+        public async Task<IActionResult> GetGuestPayments(uint guestId)
+        {
+            var response = await _basePaymentService.GuestLastPaymentByGuestIdAsync(guestId);
             return Ok(response.Data);
         }
 
@@ -51,5 +61,8 @@ namespace HotelSystem.API.Controllers
             var response = await _guestService.CreateAsync(model);
             return Ok(response);
         }
+
+
+
     }
 }

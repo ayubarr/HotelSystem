@@ -24,7 +24,6 @@ namespace HotelSystem.API
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IRoomRepository, RoomRepository>();
             services.AddScoped(typeof(UserManager<>));
-           // services.AddScoped<IBaseRepository<Guest>, BaseRepository<Guest>>();
 
             #endregion
             return services;
@@ -37,6 +36,7 @@ namespace HotelSystem.API
             services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
             services.AddScoped<IGuestService, GuestService>();
             services.AddScoped<IRoomService, RoomService>();
+            services.AddScoped<IPaymentService,PaymentService>();
 
             return services;
         }
