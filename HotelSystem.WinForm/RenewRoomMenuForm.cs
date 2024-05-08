@@ -66,23 +66,20 @@ namespace HotelSystem.WinForm
 
 					foreach (var room in rooms)
 					{
-						string res = room.Number;
-						listBox_LuxRooms.Items.Add(res);
+						string res = room.Number += room.IsBooked ? "(Занято)" : "";
+						switch (room.Type)
+						{
+							case RoomType.Luxe:
+								listBox_LuxRooms.Items.Add(res);
+								break;
+							case RoomType.Vip:
+								listBox_VipRooms.Items.Add(res);
+								break;
 
-						//string res = room.Number += room.IsBooked ? "(Занято)" : "";
-						//switch (room.Type)
-						//{
-						//	case RoomType.Luxe:
-						//		listBox_LuxRooms.Items.Add(res);
-						//		break;
-						//	case RoomType.Vip:
-						//		listBox_VipRooms.Items.Add(res);
-						//		break;
-
-						//	default:
-						//		listBox_StandartRooms.Items.Add(res);
-						//		break;
-						//}
+							default:
+								listBox_StandartRooms.Items.Add(res);
+								break;
+						}
 					}
 				}
 			}
