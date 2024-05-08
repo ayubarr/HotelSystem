@@ -52,10 +52,10 @@
             // dataGridViewRooms
             // 
             dataGridViewRooms.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewRooms.Location = new Point(129, 22);
+            dataGridViewRooms.Location = new Point(110, 12);
             dataGridViewRooms.Name = "dataGridViewRooms";
             dataGridViewRooms.RowTemplate.Height = 25;
-            dataGridViewRooms.Size = new Size(756, 509);
+            dataGridViewRooms.Size = new Size(810, 518);
             dataGridViewRooms.TabIndex = 23;
             // 
             // button_Prolongation
