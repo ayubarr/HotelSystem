@@ -41,9 +41,11 @@ namespace HotelSystem.WinForm
 			{
 				using (HttpClient httpClient = new HttpClient())
 				{
-					httpClient.DefaultRequestHeaders.Add("accept", "*");
+                    //httpClient.DefaultRequestHeaders.Add("accept", "*");
+                    httpClient.DefaultRequestHeaders.Add("accept", "*/*");
 
-					var response = await httpClient.GetAsync("https://localhost:5001/api/Guest/GetGuests");
+
+                    var response = await httpClient.GetAsync("https://localhost:5001/api/Guest/GetGuests");
 
 					// Проверяем успешность запроса
 					if (!response.IsSuccessStatusCode)
@@ -128,7 +130,7 @@ namespace HotelSystem.WinForm
 			{
 				using (HttpClient httpClient = new HttpClient())
 				{
-					httpClient.DefaultRequestHeaders.Add("accept", "*");
+					httpClient.DefaultRequestHeaders.Add("accept", "*/*");
 
 					var response = await httpClient.GetAsync("https://localhost:5001/api/Guest/GetGuests");
 
