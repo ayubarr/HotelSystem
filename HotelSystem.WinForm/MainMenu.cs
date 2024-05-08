@@ -64,5 +64,12 @@ namespace HotelSystem.WinForm
 			form.Show();
 			Visible = false;
 		}
+
+		private void button_DelCreateMenu_Click(object sender, EventArgs e)
+		{
+			var form = new DelCreateRoomMenuForm1();
+			form.Show();
+			Visible = false;
+		}
 	}
 }
