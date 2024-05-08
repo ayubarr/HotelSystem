@@ -43,7 +43,7 @@ namespace HotelSystem.WinForm
                 button_DeleteRoom.Enabled = true;
                 button_CreateRoom.Enabled = true;
 
-                dateTimePicker_RegistrationEndDate.Format = DateTimePickerFormat.Custom;
+                dateTimePicker_RegistrationStartDate.Format = DateTimePickerFormat.Custom;
                 dateTimePicker_RegistrationStartDate.CustomFormat = DateTimeFormatWinForm;
                 dateTimePicker_RegistrationEndDate.Format = DateTimePickerFormat.Custom;
                 dateTimePicker_RegistrationEndDate.CustomFormat = DateTimeFormatWinForm;

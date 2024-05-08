@@ -32,9 +32,9 @@
             dataGridViewRooms = new DataGridView();
             button_Prolongation = new Button();
             label_Prolongation = new Label();
-            textBox_Prolongation = new TextBox();
             button_Eviction = new Button();
             label1 = new Label();
+            dateTimePicker_ProlongationDate = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRooms).BeginInit();
             SuspendLayout();
             // 
@@ -52,10 +52,10 @@
             // dataGridViewRooms
             // 
             dataGridViewRooms.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewRooms.Location = new Point(12, 12);
+            dataGridViewRooms.Location = new Point(129, 22);
             dataGridViewRooms.Name = "dataGridViewRooms";
             dataGridViewRooms.RowTemplate.Height = 25;
-            dataGridViewRooms.Size = new Size(1040, 509);
+            dataGridViewRooms.Size = new Size(756, 509);
             dataGridViewRooms.TabIndex = 23;
             // 
             // button_Prolongation
@@ -79,14 +79,6 @@
             label_Prolongation.TabIndex = 25;
             label_Prolongation.Text = "Продлить выбранные номера";
             // 
-            // textBox_Prolongation
-            // 
-            textBox_Prolongation.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_Prolongation.Location = new Point(38, 567);
-            textBox_Prolongation.Name = "textBox_Prolongation";
-            textBox_Prolongation.Size = new Size(224, 36);
-            textBox_Prolongation.TabIndex = 26;
-            // 
             // button_Eviction
             // 
             button_Eviction.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -96,6 +88,7 @@
             button_Eviction.TabIndex = 27;
             button_Eviction.Text = "Выселить";
             button_Eviction.UseVisualStyleBackColor = true;
+            button_Eviction.Click += button_Eviction_Click;
             // 
             // label1
             // 
@@ -107,14 +100,22 @@
             label1.TabIndex = 28;
             label1.Text = "Освободить выбранные номера";
             // 
+            // dateTimePicker_ProlongationDate
+            // 
+            dateTimePicker_ProlongationDate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePicker_ProlongationDate.Location = new Point(38, 576);
+            dateTimePicker_ProlongationDate.Name = "dateTimePicker_ProlongationDate";
+            dateTimePicker_ProlongationDate.Size = new Size(224, 29);
+            dateTimePicker_ProlongationDate.TabIndex = 29;
+            // 
             // ProlongationAndEvictionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1064, 681);
+            Controls.Add(dateTimePicker_ProlongationDate);
             Controls.Add(label1);
             Controls.Add(button_Eviction);
-            Controls.Add(textBox_Prolongation);
             Controls.Add(label_Prolongation);
             Controls.Add(button_Prolongation);
             Controls.Add(dataGridViewRooms);
@@ -134,8 +135,8 @@
         private DataGridView dataGridViewRooms;
         private Button button_Prolongation;
         private Label label_Prolongation;
-        private TextBox textBox_Prolongation;
         private Button button_Eviction;
         private Label label1;
+        private DateTimePicker dateTimePicker_ProlongationDate;
     }
 }
