@@ -39,34 +39,21 @@ namespace HotelSystem.WinForm
 		private async void button_GetInfoGuests_Click(object sender, EventArgs e)
 		{
 			IEnumerable<Guest>? guests = await GetGuests();
-			CreateDataTableGuest(guests);
 
 			listBoxNames.Items.Clear();
-			listBoxNames.Items.Add("\tИмя");
+			listBoxNames.Items.Add("Имя гостя\t\t" +
+				"Дата начала регистрации \t" +
+				"Дата окончания регистрации\t" +
+				"Номер гостя");
 			foreach (var guest in guests)
 			{
-				string res = "\t" + guest.FirstName;
+
+				string res = guest.FirstName + "\t\t\t" + guest.RegistrationStartDate + "\t\t" + guest.RegistrationEndDate + "\t\t" + guest.Id;
 				listBoxNames.Items.Add(res);
 				//Console.WriteLine(guest.FirstName); 
+				guest.Payments
 			}
 		}
-
-		private void CreateDataTableGuest(IEnumerable<Guest>? guests)
-		{
-			// Создаем DataTable и добавляем в него данные
-			DataTable dataTable = new DataTable();
-			dataTable.Columns.Add("Фамилия");
-			dataTable.Columns.Add("Имя");
-			dataTable.Columns.Add("Отчество");
-			foreach (var guest in guests)
-			{
-				dataTable.Rows.Add(guest.LastName, guest.FirstName, guest.MiddleName);
-			}
-			// Связываем DataGridView с DataTable
-			dataGridViewGuests.DataSource = dataTable;
-		}
-
-
 
 		private void InfoMenuForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
@@ -92,7 +79,7 @@ namespace HotelSystem.WinForm
 		{
 			// Создаем DataTable и добавляем в него данные
 			DataTable dataTable = new DataTable();
-			
+
 			DataColumn dataColumn = new DataColumn();
 			dataColumn.DataType = typeof(string);
 			dataColumn.ColumnName = "Фамилия";
@@ -183,6 +170,11 @@ namespace HotelSystem.WinForm
 			dataGridViewMoreInfoGuests.Visible = false;
 			button_back.Visible = true;
 			button_back2.Visible = false;
+		}
+
+		private void listBoxNames_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
