@@ -38,40 +38,16 @@ namespace HotelSystem.WinForm
 
 		private async void button_GetInfoGuests_Click(object sender, EventArgs e)
 		{
-			try
+			IEnumerable<Guest>? guests = await GetGuests();
+			CreateDataTableGuest(guests);
+
+			listBoxNames.Items.Clear();
+			listBoxNames.Items.Add("\tИмя");
+			foreach (var guest in guests)
 			{
-				using (HttpClient httpClient = new HttpClient())
-				{
-					//httpClient.DefaultRequestHeaders.Add("accept", "*");
-					httpClient.DefaultRequestHeaders.Add("accept", "*/*");
-
-
-					var response = await httpClient.GetAsync("https://localhost:5001/api/Guest/GetGuests");
-
-					// Проверяем успешность запроса
-					if (!response.IsSuccessStatusCode)
-					{
-						throw new Exception(response.RequestMessage.ToString());
-					}
-					var json = await response.Content.ReadAsStringAsync();
-					var guests = JsonConvert.DeserializeObject<IEnumerable<Guest>>(json);
-
-					CreateDataTableGuest(guests);
-
-					
-					foreach (var guest in guests)
-					{
-						string res = "\t" + guest.FirstName;
-						listBox1.Items.Add(res);
-						//Console.WriteLine(guest.FirstName); 
-					}
-				}
-
-			}
-			catch (Exception ex)
-			{
-				// Обрабатываем исключение
-				MessageBox.Show($"При добавлении нового гостя возникла ошибка: \n\r{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				string res = "\t" + guest.FirstName;
+				listBoxNames.Items.Add(res);
+				//Console.WriteLine(guest.FirstName); 
 			}
 		}
 

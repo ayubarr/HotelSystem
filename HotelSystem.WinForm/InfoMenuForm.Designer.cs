@@ -30,7 +30,7 @@
 		{
 			label_MainMenu = new Label();
 			button_back = new Button();
-			listBox1 = new ListBox();
+			listBoxNames = new ListBox();
 			dataGridViewGuests = new DataGridView();
 			button_InfoGuests = new Button();
 			label_Reservation = new Label();
@@ -62,15 +62,15 @@
 			button_back.UseVisualStyleBackColor = true;
 			button_back.Click += button_back_click;
 			// 
-			// listBox1
+			// listBoxNames
 			// 
-			listBox1.FormattingEnabled = true;
-			listBox1.ItemHeight = 15;
-			listBox1.Items.AddRange(new object[] { "\tИмя\t" });
-			listBox1.Location = new Point(34, 90);
-			listBox1.Name = "listBox1";
-			listBox1.Size = new Size(360, 199);
-			listBox1.TabIndex = 28;
+			listBoxNames.FormattingEnabled = true;
+			listBoxNames.ItemHeight = 15;
+			listBoxNames.Items.AddRange(new object[] { "\tИмя\t" });
+			listBoxNames.Location = new Point(34, 90);
+			listBoxNames.Name = "listBoxNames";
+			listBoxNames.Size = new Size(360, 199);
+			listBoxNames.TabIndex = 28;
 			// 
 			// dataGridViewGuests
 			// 
@@ -156,15 +156,15 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(1064, 681);
-			Controls.Add(dataGridViewMoreInfoGuests);
 			Controls.Add(button_back2);
 			Controls.Add(button_MoreInfoGuests);
 			Controls.Add(dataGridViewGuests);
-			Controls.Add(listBox1);
+			Controls.Add(listBoxNames);
 			Controls.Add(label_Reservation);
 			Controls.Add(button_InfoGuests);
 			Controls.Add(button_back);
 			Controls.Add(label_MainMenu);
+			Controls.Add(dataGridViewMoreInfoGuests);
 			Name = "InfoMenuForm";
 			Text = "InfoMenuForm";
 			FormClosing += InfoMenuForm_FormClosing;
@@ -178,7 +178,7 @@
 
 		private Label label_MainMenu;
 		private Button button_back;
-		private ListBox listBox1;
+		private ListBox listBoxNames;
 		private DataGridView dataGridViewGuests;
 		private Button button_InfoGuests;
 		private Label label_Reservation;
