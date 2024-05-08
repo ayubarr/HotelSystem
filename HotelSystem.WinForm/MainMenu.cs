@@ -50,7 +50,12 @@ namespace HotelSystem.WinForm
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            button_MainMenuExit_Click(sender,e);
+            button_MainMenuExit_Click(sender, e);
+        }
+
+        private void button_EvictionFromRoom_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

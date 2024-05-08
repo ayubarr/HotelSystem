@@ -33,13 +33,11 @@
             label_MainMenu = new Label();
             button_ClientRegistration = new Button();
             label_ClientRegistration = new Label();
-            button_Prolongation = new Button();
+            button_ProlongationAndEviction = new Button();
             label_Prolongation = new Label();
             button_GetInformation = new Button();
             label_GetInformation = new Label();
             button_MainMenuExit = new Button();
-            button_EvictionFromRoom = new Button();
-            label_EvictionFromRoom = new Label();
             SuspendLayout();
             // 
             // button_Reservation
@@ -59,7 +57,7 @@
             label_Reservation.AutoSize = true;
             label_Reservation.FlatStyle = FlatStyle.System;
             label_Reservation.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label_Reservation.Location = new Point(94, 137);
+            label_Reservation.Location = new Point(64, 137);
             label_Reservation.Name = "label_Reservation";
             label_Reservation.Size = new Size(212, 25);
             label_Reservation.TabIndex = 1;
@@ -98,27 +96,27 @@
             label_ClientRegistration.TabIndex = 4;
             label_ClientRegistration.Text = "Регистрация жильцов";
             // 
-            // button_Prolongation
+            // button_ProlongationAndEviction
             // 
-            button_Prolongation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button_Prolongation.Location = new Point(33, 283);
-            button_Prolongation.Margin = new Padding(3, 2, 3, 2);
-            button_Prolongation.Name = "button_Prolongation";
-            button_Prolongation.Size = new Size(360, 38);
-            button_Prolongation.TabIndex = 5;
-            button_Prolongation.Text = "Продлить";
-            button_Prolongation.UseVisualStyleBackColor = true;
+            button_ProlongationAndEviction.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button_ProlongationAndEviction.Location = new Point(33, 283);
+            button_ProlongationAndEviction.Margin = new Padding(3, 2, 3, 2);
+            button_ProlongationAndEviction.Name = "button_ProlongationAndEviction";
+            button_ProlongationAndEviction.Size = new Size(360, 38);
+            button_ProlongationAndEviction.TabIndex = 5;
+            button_ProlongationAndEviction.Text = "Продлить/Выселить";
+            button_ProlongationAndEviction.UseVisualStyleBackColor = true;
             // 
             // label_Prolongation
             // 
             label_Prolongation.AutoSize = true;
             label_Prolongation.FlatStyle = FlatStyle.System;
             label_Prolongation.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label_Prolongation.Location = new Point(94, 257);
+            label_Prolongation.Location = new Point(64, 256);
             label_Prolongation.Name = "label_Prolongation";
-            label_Prolongation.Size = new Size(181, 25);
+            label_Prolongation.Size = new Size(297, 25);
             label_Prolongation.TabIndex = 6;
-            label_Prolongation.Text = "Продление номера";
+            label_Prolongation.Text = "Продление номера и Выселение";
             // 
             // button_GetInformation
             // 
@@ -153,40 +151,16 @@
             button_MainMenuExit.UseVisualStyleBackColor = true;
             button_MainMenuExit.Click += button_MainMenuExit_Click;
             // 
-            // button_EvictionFromRoom
-            // 
-            button_EvictionFromRoom.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button_EvictionFromRoom.Location = new Point(33, 394);
-            button_EvictionFromRoom.Margin = new Padding(3, 2, 3, 2);
-            button_EvictionFromRoom.Name = "button_EvictionFromRoom";
-            button_EvictionFromRoom.Size = new Size(360, 38);
-            button_EvictionFromRoom.TabIndex = 10;
-            button_EvictionFromRoom.Text = "Выселить";
-            button_EvictionFromRoom.UseVisualStyleBackColor = true;
-            // 
-            // label_EvictionFromRoom
-            // 
-            label_EvictionFromRoom.AutoSize = true;
-            label_EvictionFromRoom.FlatStyle = FlatStyle.System;
-            label_EvictionFromRoom.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label_EvictionFromRoom.Location = new Point(94, 367);
-            label_EvictionFromRoom.Name = "label_EvictionFromRoom";
-            label_EvictionFromRoom.Size = new Size(202, 25);
-            label_EvictionFromRoom.TabIndex = 11;
-            label_EvictionFromRoom.Text = "Выселение из номера";
-            // 
             // MainMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1064, 681);
-            Controls.Add(label_EvictionFromRoom);
-            Controls.Add(button_EvictionFromRoom);
             Controls.Add(button_MainMenuExit);
             Controls.Add(label_GetInformation);
             Controls.Add(button_GetInformation);
             Controls.Add(label_Prolongation);
-            Controls.Add(button_Prolongation);
+            Controls.Add(button_ProlongationAndEviction);
             Controls.Add(label_ClientRegistration);
             Controls.Add(button_ClientRegistration);
             Controls.Add(label_MainMenu);
@@ -208,12 +182,10 @@
         private Label label_MainMenu;
         private Button button_ClientRegistration;
         private Label label_ClientRegistration;
-        private Button button_Prolongation;
+        private Button button_ProlongationAndEviction;
         private Label label_Prolongation;
         private Label label_GetInformation;
 		private Button button_GetInformation;
         private Button button_MainMenuExit;
-        private Button button_EvictionFromRoom;
-        private Label label_EvictionFromRoom;
     }
 }
