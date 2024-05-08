@@ -32,9 +32,12 @@
 			button_back = new Button();
 			listBox1 = new ListBox();
 			dataGridViewGuests = new DataGridView();
-			button_InfoClients = new Button();
+			button_InfoGuests = new Button();
 			label_Reservation = new Label();
+			button_MoreInfoGuests = new Button();
+			dataGridViewMoreInfoGuests = new DataGridView();
 			((System.ComponentModel.ISupportInitialize)dataGridViewGuests).BeginInit();
+			((System.ComponentModel.ISupportInitialize)dataGridViewMoreInfoGuests).BeginInit();
 			SuspendLayout();
 			// 
 			// label_MainMenu
@@ -78,17 +81,17 @@
 			dataGridViewGuests.TabIndex = 29;
 			dataGridViewGuests.CellContentClick += dataGridViewGuests_CellContentClick;
 			// 
-			// button_InfoClients
+			// button_InfoGuests
 			// 
-			button_InfoClients.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-			button_InfoClients.Location = new Point(34, 319);
-			button_InfoClients.Margin = new Padding(3, 2, 3, 2);
-			button_InfoClients.Name = "button_InfoClients";
-			button_InfoClients.Size = new Size(360, 38);
-			button_InfoClients.TabIndex = 20;
-			button_InfoClients.Text = "Информация о клиентах";
-			button_InfoClients.UseVisualStyleBackColor = true;
-			button_InfoClients.Click += button_GetInfoGuests_Click;
+			button_InfoGuests.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			button_InfoGuests.Location = new Point(34, 319);
+			button_InfoGuests.Margin = new Padding(3, 2, 3, 2);
+			button_InfoGuests.Name = "button_InfoGuests";
+			button_InfoGuests.Size = new Size(360, 38);
+			button_InfoGuests.TabIndex = 20;
+			button_InfoGuests.Text = "Информация о клиентах";
+			button_InfoGuests.UseVisualStyleBackColor = true;
+			button_InfoGuests.Click += button_GetInfoGuests_Click;
 			// 
 			// label_Reservation
 			// 
@@ -101,21 +104,45 @@
 			label_Reservation.TabIndex = 21;
 			label_Reservation.Text = "Информация о клиентах";
 			// 
+			// button_MoreInfoGuests
+			// 
+			button_MoreInfoGuests.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			button_MoreInfoGuests.Location = new Point(423, 319);
+			button_MoreInfoGuests.Margin = new Padding(3, 2, 3, 2);
+			button_MoreInfoGuests.Name = "button_MoreInfoGuests";
+			button_MoreInfoGuests.Size = new Size(360, 38);
+			button_MoreInfoGuests.TabIndex = 30;
+			button_MoreInfoGuests.Text = "Подробная информация о клиентах";
+			button_MoreInfoGuests.UseVisualStyleBackColor = true;
+			button_MoreInfoGuests.Click += button_GetMoreInfoGuests_Click;
+			// 
+			// dataGridViewMoreInfoGuests
+			// 
+			dataGridViewMoreInfoGuests.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dataGridViewMoreInfoGuests.Location = new Point(423, 397);
+			dataGridViewMoreInfoGuests.Name = "dataGridViewMoreInfoGuests";
+			dataGridViewMoreInfoGuests.RowTemplate.Height = 25;
+			dataGridViewMoreInfoGuests.Size = new Size(360, 177);
+			dataGridViewMoreInfoGuests.TabIndex = 31;
+			// 
 			// InfoMenuForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(1064, 681);
+			Controls.Add(dataGridViewMoreInfoGuests);
+			Controls.Add(button_MoreInfoGuests);
 			Controls.Add(dataGridViewGuests);
 			Controls.Add(listBox1);
 			Controls.Add(label_Reservation);
-			Controls.Add(button_InfoClients);
+			Controls.Add(button_InfoGuests);
 			Controls.Add(button_back);
 			Controls.Add(label_MainMenu);
 			Name = "InfoMenuForm";
 			Text = "InfoMenuForm";
 			FormClosing += InfoMenuForm_FormClosing;
 			((System.ComponentModel.ISupportInitialize)dataGridViewGuests).EndInit();
+			((System.ComponentModel.ISupportInitialize)dataGridViewMoreInfoGuests).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -126,7 +153,9 @@
 		private Button button_back;
 		private ListBox listBox1;
 		private DataGridView dataGridViewGuests;
-		private Button button_InfoClients;
+		private Button button_InfoGuests;
 		private Label label_Reservation;
+		private Button button_MoreInfoGuests;
+		private DataGridView dataGridViewMoreInfoGuests;
 	}
 }
