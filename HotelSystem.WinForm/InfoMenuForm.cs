@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Data;
+using System.Net.Http.Json;
+using System.Text;
 
 namespace HotelSystem.WinForm
 {
@@ -68,14 +70,14 @@ namespace HotelSystem.WinForm
 		private async void button_GetMoreInfoGuests_Click(object sender, EventArgs e)
 		{
 			IEnumerable<Guest>? guests = await GetGuests();
-			CreateDataTableGuest2(guests);
+			CreateDataTableGuest(guests);
 
 			dataGridViewMoreInfoGuests.Visible = true;
 			button_back.Visible = false;
 			button_back2.Visible = true;
 		}
 
-		private void CreateDataTableGuest2(IEnumerable<Guest>? guests)
+		private async void CreateDataTableGuest(IEnumerable<Guest>? guests)
 		{
 			// Создаем DataTable и добавляем в него данные
 			DataTable dataTable = new DataTable();
@@ -124,13 +126,13 @@ namespace HotelSystem.WinForm
 
 			dataColumn = new DataColumn();
 			dataColumn.DataType = typeof(string);
-			dataColumn.ColumnName = "Оплата за бронь";
+			dataColumn.ColumnName = "Сумма Оплаты";
 			dataColumn.MaxLength = 500;
 			dataTable.Columns.Add(dataColumn);
 
 			dataColumn = new DataColumn();
 			dataColumn.DataType = typeof(string);
-			dataColumn.ColumnName = "Дата оплаты";
+			dataColumn.ColumnName = "Дата Последней оплаты";
 			dataColumn.MaxLength = 500;
 			dataTable.Columns.Add(dataColumn);
 
@@ -140,26 +142,51 @@ namespace HotelSystem.WinForm
 			{
 				string? strPaymentAmount = "Пусто";
 				string strPaymentDate = "Пусто";
-				Payment? guestPayment;
-				List<Payment>? payments = guest.Payments;
-				if (payments != null)
+				//Payment? guestPayment;
+				//List<Payment>? payments = guest.Payments;
+				//if (payments != null)
+				//{
+				//	foreach (var payment in payments)
+				//	{
+				//		if (payment.Description == "оплата за бронь")
+				//		{
+				//			guestPayment = payment;
+				//			if (guestPayment != null)
+				//			{
+				//				strPaymentAmount = payment.Amount.ToString();
+				//				if (string.IsNullOrEmpty(strPaymentAmount))
+				//					strPaymentAmount = "Пусто";
+				//				strPaymentDate = payment.Date.ToString();
+				//			}
+				//			break;
+				//		}
+				//	}
+				//}
+				try
 				{
-					foreach (var payment in payments)
+					using (HttpClient httpClient = new HttpClient())
 					{
-						if (payment.Description == "оплата за бронь")
+						httpClient.DefaultRequestHeaders.Add("accept", "*/*");
+						var response = await httpClient.GetAsync("https://localhost:5001/api/Guest/GetGuestLastPayment/GetGuestPayments"
+							);
+						// Проверяем успешность запроса
+						if (!response.IsSuccessStatusCode)
 						{
-							guestPayment = payment;
-							if (guestPayment != null)
-							{
-								strPaymentAmount = payment.Amount.ToString();
-								if (string.IsNullOrEmpty(strPaymentAmount))
-									strPaymentAmount = "Пусто";
-								strPaymentDate = payment.Date.ToString();
-							}
-							break;
+							throw new Exception(response.RequestMessage.ToString());
 						}
+						var json = await response.Content.ReadAsStringAsync();
+						Payment? payment = JsonConvert.DeserializeObject<Payment>(json);
+						strPaymentAmount = payment.Amount.ToString();
+						strPaymentDate = payment.Date.ToString();
 					}
 				}
+				catch (Exception ex)
+				{
+					// Обрабатываем исключение
+					MessageBox.Show($"При запросе \"GetGuestLastPayment\" информации возникла ошибка: \n\r{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+
+
 
 				dataTable.Rows.Add(
 					guest.LastName,

@@ -139,7 +139,6 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(1064, 681);
-			Controls.Add(dataGridViewMoreInfoGuests);
 			Controls.Add(button_back2);
 			Controls.Add(button_MoreInfoGuests);
 			Controls.Add(listBoxNames);
@@ -147,6 +146,7 @@
 			Controls.Add(button_InfoGuests);
 			Controls.Add(button_back);
 			Controls.Add(label_MainMenu);
+			Controls.Add(dataGridViewMoreInfoGuests);
 			Name = "InfoMenuForm";
 			Text = "InfoMenuForm";
 			FormClosing += InfoMenuForm_FormClosing;
