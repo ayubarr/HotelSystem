@@ -60,14 +60,7 @@ namespace HotelSystem.WinForm
 
 		private void button_RenewRoomMenu_Click(object sender, EventArgs e)
 		{
-			var form = new RenewRoomMenuForm();
-			form.Show();
-			Visible = false;
-		}
-
-		private void button_DelCreateMenu_Click(object sender, EventArgs e)
-		{
-			var form = new DelCreateRoomMenuForm1();
+			var form = new ProlongationAndEvictionForm();
 			form.Show();
 			Visible = false;
 		}

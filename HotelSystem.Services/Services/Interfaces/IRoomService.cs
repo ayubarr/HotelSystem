@@ -12,5 +12,6 @@ namespace HotelSystem.Services.Services.Interfaces
         Task<IBaseResponse<bool>> ReservationRoom(string roomNumber, DateTime bookingEndDate, DateTime bookingStartDate);
         Task<IBaseResponse<bool>> EvictionFromRoom(string roomNumber);
         Task<IBaseResponse<bool>> ProlongationRoom(string roomNumber, DateTime newBookingEndDate);
+        Task<IBaseResponse<bool>> DeleteRoomByNumber(string roomNumber);
     }
 }

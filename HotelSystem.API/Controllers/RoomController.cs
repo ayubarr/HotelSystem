@@ -41,6 +41,13 @@ namespace HotelSystem.API.Controllers
             return Ok(response);
         }
 
+        [HttpDelete("DeleteRoomByNumber")]
+        public async Task<IActionResult> DeleteRoomByNumber(string roomNumber)
+        {
+            var response = await _roomService.DeleteRoomByNumber(roomNumber);
+            return Ok(response);
+        }
+
         [HttpPut("UpdateRoom")]
         public async Task<IActionResult> UpdateRoom(UpdateRoomDTO model)
         {

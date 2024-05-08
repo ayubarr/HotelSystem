@@ -16,6 +16,25 @@ namespace HotelSystem.Services.Services.Implementations
             _roomRepository = roomRepository;
         }
 
+        public async Task<IBaseResponse<bool>> DeleteRoomByNumber(string roomNumber)
+        {
+            try
+            {
+                StringValidator.CheckIsNotNull(roomNumber);
+
+                var room = _roomRepository.GetAll().Where(r => r.Number == roomNumber).FirstOrDefault();
+                ObjectValidator<Room>.CheckIsNotNullObject(room);
+
+                await _roomRepository.Delete(room); 
+                return ResponseFactory<bool>.CreateSuccessResponse(true);
+
+            }
+            catch (Exception ex)
+            {
+                return ResponseFactory<bool>.CreateErrorResponse(ex);
+            }
+        }
+
         public async Task<IBaseResponse<bool>> EvictionFromRoom(string roomNumber)
         {
             try
