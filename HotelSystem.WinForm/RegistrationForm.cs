@@ -52,7 +52,8 @@ namespace HotelSystem.WinForm
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("User registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
+                        this.Visible = false;
+
                     }
                     else
                     {

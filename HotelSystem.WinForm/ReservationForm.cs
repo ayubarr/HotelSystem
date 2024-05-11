@@ -121,7 +121,7 @@ namespace HotelSystem.WinForm
 
             var selectedRoom =
                 listBox_StandartRooms.SelectedIndex != -1 ? listBox_StandartRooms.SelectedItem
-                : listBox_LuxRooms.SelectedIndex != -1 ? listBox_StandartRooms.SelectedItem
+                : listBox_LuxRooms.SelectedIndex != -1 ? listBox_LuxRooms.SelectedItem
                 : listBox_VipRooms.SelectedIndex != -1 ? listBox_VipRooms.SelectedItem : "";
 
             selectedRoom = selectedRoom.ToString().Replace("(Занято)", "").Trim();
@@ -224,12 +224,13 @@ namespace HotelSystem.WinForm
         {
             var selectedRoom =
              listBox_StandartRooms.SelectedIndex != -1 ? listBox_StandartRooms.SelectedItem
-             : listBox_LuxRooms.SelectedIndex != -1 ? listBox_StandartRooms.SelectedItem
+             : listBox_LuxRooms.SelectedIndex != -1 ? listBox_LuxRooms.SelectedItem
              : listBox_VipRooms.SelectedIndex != -1 ? listBox_VipRooms.SelectedItem : null;
 
             if (selectedRoom == null)
             {
                 MessageBox.Show($"Выбкрите удаляемый номер", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             selectedRoom = selectedRoom.ToString().Replace("(Занято)", "").Trim();
